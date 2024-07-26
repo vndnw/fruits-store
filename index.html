@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xobbee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="grid">
+                <nav class="header__navbar header__navbar-list">
+                    <div class="header__navbar-list">
+                        <div>
+                            <i class="header__logo fa-solid fa-seedling"></i>
+                        </div>
+                    </div>
+
+                    <ul class="header__navbar-list header__navbar-list-info">
+                        <li class="header__navbar-item header__navbar-item--separate">
+                            <a class="header__navbar-item" href="">TRANG CHỦ</a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item--separate">
+                            <a class="header__navbar-item" href="">SẢN PHẨM</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a class="header__navbar-item" href="">
+                                <span class="header__navbar-item--no-pointer">KẾT NỐI</span>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fa-brands fa-tiktok "></i>
+                                </a>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fa-brands fa-youtube"></i>
+                                </a>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="header__navbar-list">
+                        <ul class="header__navbar-list">
+                            <div class="header__navbar-item">
+                                <input class="header__navbar-search" type="text" placeholder="Tìm kiếm...">
+                                <i class="header__navbar-search-icon fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </ul>
+    
+                        <div class="header__navbar-list">
+                            <div class="header__navbar-box">
+                                <i class="header__navbar-cart fa-solid fa-bag-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="./assets/img/slides/slide1.png">
+            </div>
+        
+            <div class="mySlides fade">
+                <img src="./assets/img/slides/slide2.png">
+            </div>
+        
+            <div class="mySlides fade">
+                <img src="./assets/img/slides/slide3.png">
+            </div>
+           
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <br>
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+
+        <!-- Container -->
+        <article class="container">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-12">
+                        <div class="type-product">
+                            <label class="type-product-fruits">Trái Cây</label>
+                        </div>
+                    </div>
+                    <div class="grid__column-12">
+                        <div class="home-product">
+                            <div class="grid__row">
+    
+                                <!-- Product item -->
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/strawberry.jpg);"></div>
+                                        <h4 class="home-product-item__name">DÂU ĐÀ LẠT</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <ul class="pagination home-product__pagination">
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fa-solid fa-angle-left"></i>
+                                </a>
+                            </li>
+
+                            <li class="pagination-item pagination-item--active">
+                                <a href="" class="pagination-item__link">1</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">2</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">3</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">4</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">5</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">...</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">14</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fa-solid fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-12">
+                        <div class="type-product">
+                            <label class="type-product-fruits">Rau Củ</label>
+                        </div>
+                    </div>
+                    <div class="grid__column-12">
+                        <div class="home-product">
+                            <div class="grid__row">
+    
+                                <!-- Product item -->
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="grid__column-2">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img" style="background-image: url(./assets/img/products/mongtoi.jpg);"></div>
+                                        <h4 class="home-product-item__name">RAU MỒNG TƠI</h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">235.000đ</span>
+                                            <span class="home-product-item__price-current">199.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__add">
+                                            <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
+                                            <span>
+                                                <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
+                                            </span>
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">15%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <ul class="pagination home-product__pagination">
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fa-solid fa-angle-left"></i>
+                                </a>
+                            </li>
+
+                            <li class="pagination-item pagination-item--active">
+                                <a href="" class="pagination-item__link">1</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">2</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">3</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">4</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">5</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">...</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">14</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fa-solid fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-2">
+                        <div class="h3 footer__heading">Chăm sóc khách hàng</div>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trung tâm trợ giúp</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Xobbe Mall</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hướng dẫn mua hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2">
+                        <div class="h3 footer__heading">Giới thiệu</div>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Giới thiệu</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Tuyển dụng</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Điều Khoản</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2">
+                        <div class="h3 footer__heading">Danh mục</div>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trái cây</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Chậu cây</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Rau củ</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Rau giảm giá</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trái cây hot</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2">
+                        <div class="h3 footer__heading">Theo dõi</div>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-tiktok"></i>
+                                    TikTok
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-brands fa-square-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2">
+                        <div class="h3 footer__heading">Theo dõi</div>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-solid fa-location-dot"></i>
+                                    340/23 Tô Ký/P.15/Q.Tân Bình/TP HCM
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-solid fa-square-phone"></i>
+                                    0326092480
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fa-solid fa-envelope"></i>
+                                    hotien804@gmail.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-2">
+                        <div class="h3 footer__heading">Vào cửa hàng bằng</div>
+                        <div class="footer__download">
+                            <img src="./assets/img/footer/qr_code.png" alt="Download QR" class="footer__download-qr">
+                            <div class="footer__download-apps">
+                                <a href="" class="footer__download-app-link">
+                                    <img src="./assets/img/footer/google_play.png" alt="Google Play" class="footer__download-app-img">
+                                </a>
+                                <a href="" class="footer__download-app-link">
+                                    <img src="./assets/img/footer/app_store.png" alt="App Store" class="footer__download-app-img">
+                                </a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="grid">
+                    <div class="footer__bottom-box">
+                        <ul class="footer__bottom-img">
+                            <li class="footer__bottom-img-list">
+                                <a href="" class="footer__bottom-img-link">
+                                    <img src="https://cdn.dangkywebsitevoibocongthuong.com/wp-content/uploads/2018/06/logo.png" alt="" class="footer__bottom-img-icon">
+                                </a>
+                            </li>
+                            <li class="footer__bottom-img-list">
+                                <a href="" class="footer__bottom-img-link">
+                                    <img src="https://zaria.vn/wp-content/uploads/2021/04/bo-cong-thuong.png" alt="" class="footer__bottom-img-icon">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="footer__text">Công ty TNHH Xobbee</p>
+                        <p class="footer__text">Địa chỉ: Tầng 4-5-6, Tòa nhà Capital Place, số 29 đường Phạm Văn Bạch, Phường 15, Quận 1, Thành phố Hồ Chí Minh, Việt Nam. Tổng đài hỗ trợ: 19001221 - Email: cskh@hotro.xobbee.vn</p>
+                        <p class="footer__text">Chịu Trách Nhiệm Quản Lý Nội Dung: Hồ Đoàn Quyết Tiến - Điện thoại liên hệ: 0326092480</p>
+                        <p class="footer__text">Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch & Đầu tư TP Hồ Chí Minh cấp lần đầu ngày 10/02/2015</p>
+                        <p class="footer__text">© 2024 - Bản quyền thuộc về Công ty TNHH Xobbee</p>
+                    </div>
+                </div>
+            </div>
+        </footer>	
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
