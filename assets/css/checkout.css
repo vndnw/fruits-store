@@ -1,0 +1,21 @@
+
+.checkout__form-group label {
+    font-size: 1.6rem;
+}
+.checkout__form-input, .checkout__form-textarea {
+    width: 95%;
+    padding: 12px 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.4rem;
+}
+.payment {
+    width: 95%;
+    padding: 20px 10px;
+    margin: 10px 0;
+    border: 1px solid rgb(50, 205, 50);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}

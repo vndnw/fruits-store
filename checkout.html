@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="./assets/css/base.css" />
     <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/checkout.css" />
     <link
       rel="stylesheet"
       href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css"
@@ -81,9 +82,107 @@
       </header>
 
       <!-- Container -->
-      <article class="container">
-        Thanh toán
-      </article>
+      <main class="container">
+        <div class="grid">
+          <div class="checkout grid__row">
+            <div class="checkout__info grid__column-7">
+              <div class="checkout__heading">
+                <h1 class="checkout__title">Thông tin giao hàng</h1>
+              </div>
+              <div class="checkout__form">
+                <form class="checkout__form-box">
+                  <div class="checkout__form-group">
+                    <input
+                      type="text"
+                      id="name"
+                      class="checkout__form-input"
+                      placeholder="Họ và tên"
+                    />
+                  </div>
+                  <div class="checkout__form-group">
+                    <input
+                      type="text"
+                      id="phone"
+                      class="checkout__form-input"
+                      placeholder="Số điện thoại"
+                    />
+                  </div>
+                  <div class="checkout__form-group">
+                    <input
+                      type="text"
+                      id="address"
+                      class="checkout__form-input"
+                      placeholder="Địa chỉ"
+                    />
+                  </div>
+                  <div class="checkout__form-group">
+                    <textarea
+                      name="note"
+                      id="note"
+                      class="checkout__form-textarea"
+                      placeholder="Ghi chú"
+                      rows="5"
+                    ></textarea>
+                  </div>
+                  <h2>Phương thức thanh toán</h2>
+
+                  <div class="checkout__form-group payment">
+                    <div>
+                      <input
+                        type="radio"
+                        name="payment"
+                        id="payment"
+                        class="checkout__form-radio"
+                        value="momo"
+                      />
+                      <label for="payment" class="checkout__form-label"
+                        >Thanh toán qua MoMo</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="payment"
+                        id="payment"
+                        class="checkout__form-radio"
+                        value="cod"
+                      />
+                      <label for="payment" class="checkout__form-label"
+                        >Thanh toán khi nhận hàng (COD)</label
+                      >
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="checkout__cart grid__column-5">
+              <div class="checkout__cart-item-list">
+                <div class="checkout__cart-item">
+                  <div class="checkout__cart-item-img">
+                    <img
+                      src="./assets/img/products/1.jpg"
+                      alt=""
+                      class="checkout__cart-item-img-box"
+                    />
+                  </div>
+                  <div>
+                    <h3 class="checkout__cart-item-title">Cây cỏ</h3>
+                    <p class="checkout__cart-item-price">100.000đ</p>
+                    <div>
+                      <div>
+                        <button>Xóa</button>
+                      </div>
+                      <button class="checkout__cart-item-btn">-</button>
+                      <span class="checkout__cart-item-quantity">1</span>
+                      <button class="checkout__cart-item-btn">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
 
       <!-- Footer -->
       <footer class="footer">
