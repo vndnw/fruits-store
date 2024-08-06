@@ -241,16 +241,36 @@
     font-weight: 500;
 }
 
-.pay-product__type-product div {
+.pay-product__type-product button {
     font-size: 1.2rem;
     font-weight: 400;
     width: 80px;
     height: 25px;
     border: 1px solid var(--primary-color);
     border-radius: 2px;
-    padding: 4px 5px 5px 13px;
+    padding-top: 2px;
     margin: 10px 0 0 10px;
     text-transform: uppercase;
+}
+
+.pay-product__type-product button:hover {
+    border: 1px solid black;
+    background-color: var(--white-color);
+    cursor: pointer;
+}
+
+.pay-product__type-product-active {
+    font-size: 1.2rem;
+    font-weight: 400;
+    width: 80px;
+    height: 25px;
+    border: 1px solid black !important;
+    border-radius: 2px;
+    padding-top: 2px;
+    margin: 10px 0 0 10px;
+    text-transform: uppercase;
+    background-color: var(--primary-color);
+    cursor: pointer;
 }
 
 .pay-product__quantity-product {
@@ -331,4 +351,35 @@
 
 .pay-product__add-and-pay div {
     padding: 7px 5px 5px 55px;
+}
+
+.delivery-product {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+.delivery-product__commit {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.delivery-product__commit-icon {
+    font-size: 2rem;
+    padding: 6px 10px 0 0;
+}
+
+.describe-product {
+    margin-top: 20px;
+    border-top: 2px solid #ededed;
+}
+
+.describe-product__title {
+    
+}
+
+.describe-product__content {
+    
 }
