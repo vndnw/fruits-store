@@ -30,37 +30,24 @@
 
                     <ul class="header__navbar-list header__navbar-list-info">
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <button class="header__navbar-item-btn"><a class="header__navbar-item" href="#">TRANG
-                                    CHỦ</a></button>
+                            <a class="header__navbar-item" href="">TRANG CHỦ</a>
                         </li>
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <button class="header__navbar-item-btn"><a class="header__navbar-item" href="#product">SẢN
-                                    PHẨM</a></button>
+                            <a class="header__navbar-item" href="">SẢN PHẨM</a>
                         </li>
                         <li class="header__navbar-item">
-                            <button class="header__navbar-item-btn">
-                                <a class="header__navbar-item" href="#">KẾT NỐI</a>
-                                <i class="fa-solid fa-chevron-down"></i>
-                                <div class="header__navbar-item-btn-list">
-                                    <div class="list-social">
-                                        <i class="header__navbar-icon fa-brands fa-facebook"></i>
-                                        <a class="header__navbar-icon-link" href="">Facebook</a>
-                                    </div>
-                                    <div class="list-social">
-                                        <i class="header__navbar-icon fa-brands fa-square-instagram"></i>
-                                        <a class="header__navbar-icon-link" href="">Instagram</a>
-                                    </div>
-                                    <div class="list-social">
-                                        <i class="header__navbar-icon fa-brands fa-tiktok"></i>
-                                        <a class="header__navbar-icon-link" href="">TikTok</a>
-                                    </div>
-                                    <div class="list-social">
-                                        <i class="header__navbar-icon fa-brands fa-youtube"></i>
-                                        <a class="header__navbar-icon-link" href="">Youtube</a>
-                                    </div>
-                                </div>
-                            </button>
-
+                            <a class="header__navbar-item" href="">
+                                <span class="header__navbar-item--no-pointer">KẾT NỐI</span>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fa-brands fa-tiktok "></i>
+                                </a>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fa-brands fa-youtube"></i>
+                                </a>
+                            </a>
                         </li>
                     </ul>
 
