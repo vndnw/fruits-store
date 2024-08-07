@@ -35,9 +35,12 @@
     list-style: none;
     display: flex;
 }
-
-.header__navbar-list:hover {
+.header__navbar-logo {
     cursor: pointer;
+    z-index: 1;
+}
+.header__navbar-list:hover {
+    /* cursor: pointer; */
 }
 
 .header__navbar-list-info {
@@ -107,6 +110,7 @@
 }
 
 .header__navbar-search-icon {
+    cursor: pointer;
     padding: 8px;
     margin: 0 4px;
     border: 1px solid var(--white-color);
@@ -119,6 +123,7 @@
 }
 
 .header__navbar-cart {
+    cursor: pointer;
     font-size: 2rem;
     padding: 7px;
     border: 1px solid var(--white-color);

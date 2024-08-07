@@ -12,6 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
     <script src="./assets/js/script.js" defer></script>
 
 </head>
@@ -22,11 +27,9 @@
         <header class="header">
             <div class="grid">
                 <nav class="header__navbar header__navbar-list">
-                    <div class="header__navbar-list">
-                        <div>
-                            <i class="header__logo fa-solid fa-seedling"></i>
-                        </div>
-                    </div>
+                    <a class="header__navbar-list header__navbar-logo" href="/">
+                        <img style="height: 70px; width: 70px;" src="./assets/img/header/logo.png" alt="logo">
+                    </a>
 
                     <ul class="header__navbar-list header__navbar-list-info">
                         <li class="header__navbar-item header__navbar-item--separate">
