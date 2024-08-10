@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/product.css">
+    <link rel="stylesheet" href="./assets/css/checkout.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +17,7 @@
     <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-
     <script src="./assets/js/script.js" defer></script>
-
 </head>
 
 <body>
@@ -33,10 +32,10 @@
 
                     <ul class="header__navbar-list header__navbar-list-info">
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item" href="">TRANG CHỦ</a>
+                            <a class="header__navbar-item-link" href="">TRANG CHỦ</a>
                         </li>
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item" href="">SẢN PHẨM</a>
+                            <a class="header__navbar-item-link" href="">SẢN PHẨM</a>
                         </li>
                         <li class="header__navbar-item">
                             <a class="header__navbar-item" href="">
@@ -62,9 +61,17 @@
                             </div>
                         </ul>
 
+                        <!-- Cart -->
                         <div class="header__navbar-list">
                             <div class="header__navbar-box">
                                 <i class="header__navbar-cart fa-solid fa-bag-shopping"></i>
+                                
+                                <div class="header__cart-list header__cart-list--no-cart">
+                                    <img src="./assets/img/header/no_cart.png" class="header__cart-no-cart-img">
+                                    <span class="header__cart-list-no-cart-msg">
+                                        Giỏ hàng trống
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

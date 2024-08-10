@@ -35,10 +35,12 @@
     list-style: none;
     display: flex;
 }
+
 .header__navbar-logo {
     cursor: pointer;
     z-index: 1;
 }
+
 .header__navbar-list:hover {
     /* cursor: pointer; */
 }
@@ -64,13 +66,12 @@
 }
 
 .header__navbar-item,
-.header__navbar-item-link,
 .header__navbar-icon-link {
     display: inline-flex;
     align-items: center;
 }
 
-.header__navbar-item:hover,
+.header__navbar-item-link:hover,
 .header__navbar-icon:hover {
     color: black;
 }
@@ -102,11 +103,15 @@
 }
 
 .header__navbar-search {
-    width: 200px;
+    width: 265px;
     font-size: 1.4rem;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid var(--white-color);
+}
+
+.header__navbar-search input:hover {
+    color: white;
 }
 
 .header__navbar-search-icon {
@@ -120,6 +125,77 @@
 
 .header__navbar-search-icon:hover {
     color: black;
+}
+
+.header__navbar-box {
+    position: relative;
+}
+
+.header__navbar-box:hover .header__cart-list {
+    display: block;
+}
+
+.header__cart-list {
+    position: absolute;
+    top: calc(100% - 4px);
+    right: 0px;
+    background-color: var(--white-color);
+    width: 350px;
+    z-index: 2;
+    border-radius: 2px;
+    box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);
+    display: none;
+    animation: fadeIn ease-in 0.2s;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.header__cart-list::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    width: 33px;
+    height: 12px;
+    background-color: transparent;
+}
+
+.header__cart-list::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: -16.5px;
+    border-width: 12px 18px;
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+}
+
+.header__cart-list--no-cart {
+    padding: 28px 0;
+}
+
+.header__cart-no-cart-img {
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header__cart-list-no-cart-msg {
+    display: block;
+    margin: 12px 0 0 130px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    font-weight: 400;
 }
 
 .header__navbar-cart {
@@ -172,6 +248,7 @@
     0% {
         transform: translateX(10%);
     }
+
     100% {
         transform: translateX(-100%);
     }
@@ -183,21 +260,21 @@
     position: relative;
     margin: auto;
     margin-top: 10px;
-  }
-  
+}
+
 /* Hide the images by default */
 .mySlides {
     display: none;
 }
 
-.mySlides > img {
+.mySlides>img {
     width: 100%;
     height: 500px;
     object-fit: cover;
 }
-  
+
 /* Next & previous buttons */
-.prev, 
+.prev,
 .next {
     cursor: pointer;
     position: absolute;
@@ -212,19 +289,19 @@
     border-radius: 0 3px 3px 0;
     user-select: none;
 }
-  
+
 /* Position the "next button" to the right */
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
-  
+
 /* On hover, add a black background color with a little bit see-through */
-  .prev:hover, 
-  .next:hover {
-    background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
-  
+
 /* The dots/bullets/indicators */
 .dot {
     cursor: pointer;
@@ -236,24 +313,25 @@
     display: inline-block;
     transition: background-color 0.6s ease;
 }
-  
-.active, 
+
+.active,
 .dot:hover {
     background-color: #717171;
 }
-  
+
 /* Fading animation */
 .fade {
     animation-name: fade;
     animation-duration: 2s;
 }
-  
+
 @keyframes fade {
     from {
-      opacity: .8
+        opacity: .8
     }
+
     to {
-      opacity: 1
+        opacity: 1
     }
 }
 
@@ -423,7 +501,7 @@
     bottom: -5px;
     border-width: 0 20.5px 6px;
     border-style: solid;
-    border-color: transparent rgba(255, 216, 64, 0.94) transparent rgba(255, 216, 64, 0.94) ;
+    border-color: transparent rgba(255, 216, 64, 0.94) transparent rgba(255, 216, 64, 0.94);
 }
 
 .home-product-item__sale-off-percent {
@@ -460,12 +538,12 @@
     margin: 0 12px;
 }
 
-.pagination-item--active .pagination-item__link{
+.pagination-item--active .pagination-item__link {
     color: var(--white-color);
     background-color: var(--primary-color);
 }
 
-.pagination-item--active .pagination-item__link:hover{
+.pagination-item--active .pagination-item__link:hover {
     background-color: #50dd50;
 }
 
