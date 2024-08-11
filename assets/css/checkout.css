@@ -1,0 +1,153 @@
+
+.checkout__form-group label {
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+.checkout__form-radio {
+    cursor: pointer;
+}
+.checkout__form-input, .checkout__form-textarea {
+    width: 95%;
+    padding: 12px 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.4rem;
+}
+.payment {
+    width: 95%;
+    padding: 20px 10px;
+    margin: 10px 0;
+    border: 1px solid rgb(50, 205, 50);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.checkout__cart {
+    background-color: #fafafa;
+    padding: 32px;
+
+}
+.checkout__cart-item-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.checkout__cart-item {
+    width: 100%;
+    display: flex;
+}
+.checkout__cart-item-img-box {
+
+    width: 80px;
+    object-fit: contain ;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.checkout__cart-item-info {
+    width: 100%;
+    padding-left: 20px;
+} 
+.checkout__cart-item-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.checkout__cart-item-price {
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: right;
+}
+.checkout__cart-item-delete i {
+    font-size: 1.6rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.checkout__cart-item-quantity-input {
+    width: 30px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 5px 10px ;
+    background-color: aliceblue;
+    border: none;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+
+}
+.checkout__cart-item-btn {
+    font-size: 1.6rem;
+    font-weight: 900;
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.checkout__cart-item-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.checkout__cart-item-action {
+    display: flex;
+    align-items: center;
+    margin-right: -10px;
+}
+.checkout__cart-voucher {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+.checkout__cart-voucher-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.6rem;
+}
+.checkout__cart-voucher-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(50, 205, 50);
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.checkout__cart-fee {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.6rem;
+}
+.checkout__cart-fee-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.checkout__cart-btn {
+    display: flex;
+    justify-content: end;
+}
+.checkout__cart-btn-link {
+   margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(50, 205, 50);
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

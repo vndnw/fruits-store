@@ -1,0 +1,385 @@
+.page-product {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 700px;
+}
+
+.img-product {
+    height: 700px;
+    margin-right: 5px;
+    background-color: var(--white-color);
+    position: relative;
+    display: flex;
+    padding: 20px;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-content: space-between;
+}
+
+.wrapper-img-product-item {
+    
+}
+
+.img-product-item {
+    height: 450px;
+    width: 450px;
+    position: absolute;
+}
+
+/* Slideshow img */
+.slideshow-img {
+    position: relative;
+    margin: auto;
+}
+
+.list-Img {
+    margin-top: 430px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 450px;
+}
+
+.myImg {
+
+}
+
+.myImg img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 2px;
+}
+
+.myImg img:hover {
+    border: 5px solid #333;
+    border-radius: 2px;
+}
+  
+/* Next & previous buttons */
+.prev, 
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+  
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+  
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, 
+.next:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+  
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 15px 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+  
+.active, 
+.dot:hover {
+    background-color: #717171;
+}
+  
+.fade {
+    animation-name: fade;
+    animation-duration: 2s;
+}
+  
+@keyframes fade {
+    from {
+      opacity: .8
+    }
+    to {
+      opacity: 1
+    }
+}
+
+.footer-img-product {
+    margin-top: -50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.share-product {
+    display: flex;
+    font-size: 1.4rem;
+}
+
+.list-icon-product {
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.icon-product {
+    color: black;
+    font-size: 2rem;
+    margin-top: 14px;
+}
+
+.icon-product:hover {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.favourite-product {
+    display: flex;
+}
+
+.favourite-product h3 {
+    margin-left: 10px;
+    font-size: 1.6rem;
+}
+
+.info-product {
+    height: 700px;
+    background-color: var(--white-color);
+    margin-left: 5px;
+}
+
+.pay {
+    margin-top: 20px;
+}
+
+.name-product {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.name-product__status {
+    display: flex;
+    margin-top: -10px;
+}
+
+.name-product h3 {
+    text-transform: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.name-product span {
+    text-transform: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin: 14px 0 0 8px;
+}
+
+.pay-product {
+    display: block;
+}   
+
+.pay-product__price-product {
+    display: flex;
+    font-size: 1.4rem;
+    margin-top: -5px;
+    background-color: #fafafa;
+    padding-left: 10px;
+    border-radius: 2px;
+}
+
+.pay-product__price-product h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.pay-product__price-old {
+    margin: 14px 0 0 10px;
+    text-decoration: line-through;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.pay-product__price-current {
+    margin: 14px 0 0 10px;
+    font-size: 2rem;
+    color: #ff2c26;
+    font-weight: 480;
+}
+
+.pay-product__price-product div {
+    width: 40px;
+    height: 25px;
+    margin: 10px 0 0 15px;
+    background-color: var(--white-color);
+    padding: 3px 5px 5px 4px;
+    border: 1.8px solid #ff0000;
+    border-radius: 3px;
+    font-weight: 600;
+    color: #ff0000;
+}
+
+.pay-product__type-product {
+    display: flex;
+}
+
+.pay-product__type-product p {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.pay-product__type-product button {
+    font-size: 1.2rem;
+    font-weight: 400;
+    width: 80px;
+    height: 25px;
+    border: 1px solid var(--primary-color);
+    border-radius: 2px;
+    padding-top: 2px;
+    margin: 10px 0 0 10px;
+    text-transform: uppercase;
+}
+
+.pay-product__type-product button:hover {
+    border: 1px solid black;
+    background-color: var(--white-color);
+    cursor: pointer;
+}
+
+.pay-product__type-product-active {
+    font-size: 1.2rem;
+    font-weight: 400;
+    width: 80px;
+    height: 25px;
+    border: 1px solid black !important;
+    border-radius: 2px;
+    padding-top: 2px;
+    margin: 10px 0 0 10px;
+    text-transform: uppercase;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.pay-product__quantity-product {
+    margin-top: 0px;
+    display: flex;
+}
+
+.pay-product__quantity-product {
+    margin-top: 0px;
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.pay-product__quantity-product p {
+    margin-right: 10px;
+}
+
+.pay-product__quantity-product div {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    margin: 10px 0 0 0;
+    padding: 6px 5px 5px 11px;
+}
+
+.pay-product__quantity-product .minus {
+    padding-left: 8px;
+    color: #a4aaaf;
+}
+
+.pay-product__quantity-product .plus {
+    padding-left: 8px;
+    color: #a4aaaf;
+}
+
+.pay-product__add-and-pay {
+    margin-top: 20px;
+    display: flex;
+}
+
+.add-and-pay__add-cart {
+    text-transform: uppercase;
+    flex: 1;
+    height: 45px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: var(--white-color);
+    color: #ff2c26;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.add-and-pay__add-cart:hover {
+    background-color: #ff2c26;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.add-and-pay__pay-now {
+    text-transform: uppercase;
+    flex: 1;
+    height: 45px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    border: 1px solid black;
+    margin-left: 10px;
+    border-radius: 3px;
+    background-color: #ff2c26;
+    cursor: pointer;
+    color: var(--white-color);
+}
+
+.add-and-pay__pay-now:hover {
+    background-color: #f3160f;
+}
+
+.pay-product__add-and-pay div {
+    padding: 7px 5px 5px 55px;
+}
+
+.delivery-product {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+.delivery-product__commit {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.delivery-product__commit-icon {
+    font-size: 2rem;
+    padding: 6px 10px 0 0;
+}
+
+.describe-product {
+    margin-top: 20px;
+    border-top: 2px solid #ededed;
+}
+
+.describe-product__title {
+    
+}
+
+.describe-product__content {
+    
+}
