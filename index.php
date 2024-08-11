@@ -49,11 +49,31 @@
 
                         <!-- Product item -->
                         <?php
-                        $sql = "SELECT id, name, image , old_price, current_price, 100 * (old_price - current_price) / old_price AS sale_off FROM products";
+                        $limit = 12;
 
-                        $products = $conn->query($sql);
-                        // $conn->close();
-                        
+                        $stmt = $conn->prepare("SELECT COUNT(*) as total FROM products");
+                        $stmt->execute();
+                        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $totalRecords = $row['total'];
+                        $totalPages = ceil($totalRecords / $limit);
+
+                        $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+                        if ($currentPage < 1 || $currentPage > $totalPages) {
+                            $currentPage = 1;
+                        }
+
+                        $offset = ($currentPage - 1) * $limit;
+
+                        $stmt = $conn->prepare("SELECT id, name, image, old_price, current_price, 100 * (old_price - current_price) / old_price AS sale_off 
+                                        FROM products 
+                                        LIMIT :limit OFFSET :offset");
+                        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+                        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+                        $stmt->execute();
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
                         foreach ($products as $product) {
                             ?>
                             <div class="grid__column-2">
@@ -97,47 +117,28 @@
                 </div>
 
                 <!-- Pagination -->
-                <ul class="pagination home-product__pagination">
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">
-                            <i class="pagination-item__icon fa-solid fa-angle-left"></i>
-                        </a>
-                    </li>
+                <?php
 
-                    <li class="pagination-item pagination-item--active">
-                        <a href="" class="pagination-item__link">1</a>
-                    </li>
 
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">2</a>
-                    </li>
+                // Generate pagination links
+                echo '<ul class="pagination home-product__pagination">';
+                // Previous link
+                if ($currentPage > 1) {
+                    echo '<li class="pagination-item"><a href="?page=' . ($currentPage - 1) . '" class="pagination-item__link"><i class="pagination-item__icon fa-solid fa-angle-left"></i></a></li>';
+                }
+                // Page numbers
+                for ($i = 1; $i <= $totalPages; $i++) {
+                    $activeClass = ($i == $currentPage) ? 'pagination-item--active' : '';
+                    echo '<li class="pagination-item ' . $activeClass . '"><a href="?page=' . $i . '" class="pagination-item__link">' . $i . '</a></li>';
+                }
 
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">3</a>
-                    </li>
+                // Next link
+                if ($currentPage < $totalPages) {
+                    echo '<li class="pagination-item"><a href="?page=' . ($currentPage + 1) . '" class="pagination-item__link"><i class="pagination-item__icon fa-solid fa-angle-right"></i></a></li>';
+                }
 
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">4</a>
-                    </li>
-
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">5</a>
-                    </li>
-
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">...</a>
-                    </li>
-
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">14</a>
-                    </li>
-
-                    <li class="pagination-item">
-                        <a href="" class="pagination-item__link">
-                            <i class="pagination-item__icon fa-solid fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
+                echo '</ul>';
+                ?>
 
             </div>
         </div>
