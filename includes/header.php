@@ -32,10 +32,10 @@
 
                     <ul class="header__navbar-list header__navbar-list-info">
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item-link" href="">TRANG CHỦ</a>
+                            <a class="header__navbar-item-link" href="#">TRANG CHỦ</a>
                         </li>
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item-link" href="">SẢN PHẨM</a>
+                            <a class="header__navbar-item-link" href="#product">SẢN PHẨM</a>
                         </li>
                         <li class="header__navbar-item">
                             <a class="header__navbar-item" href="">
@@ -60,17 +60,215 @@
                                 <i class="header__navbar-search-icon fa-solid fa-magnifying-glass"></i>
                             </div>
                         </ul>
-
+                        
                         <!-- Cart -->
                         <div class="header__navbar-list">
                             <div class="header__navbar-box">
                                 <i class="header__navbar-cart fa-solid fa-bag-shopping"></i>
-                                
-                                <div class="header__cart-list header__cart-list--no-cart">
+                                <span class="header__navbar-notice">9</span>
+
+                                <!-- No cart: header__cart-list--no-cart -->
+                                <div class="header__cart-list ">
                                     <img src="./assets/img/header/no_cart.png" class="header__cart-no-cart-img">
                                     <span class="header__cart-list-no-cart-msg">
                                         Giỏ hàng trống
                                     </span>
+
+                                    <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
+                                    <ul class="header__cart-list-item">
+                                        <!-- Cart-item -->
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt thơm ngon xuất xứ từ Đà Lạt được trồng trong nhà kính với sự chăm sóc đặc biệt nhất thế giới</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="header__cart-item">
+                                            <img src="./assets/img/products/strawberry.jpg" alt="" class="header__cart-img">
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">Dâu tây Đà Lạt</h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">200.000đ</span>
+                                                        <span class="header__cart-item-multiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="header__cart-item-body">
+                                                    <span class="header__cart-item-description">
+                                                        Loại: Hộp 250g
+                                                    </span>
+                                                    <span class="header__cart-item-remove">Xoá</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                    <button class="header__cart-checkout">Thanh toán</button>
                                 </div>
                             </div>
                         </div>
