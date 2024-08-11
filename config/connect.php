@@ -1,14 +1,15 @@
 <?php
 $servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "vnd_store"; 
+$username = "root";
+$password = "";
+$dbname = "fruits_shop";
 
-// Tạo kết nối
-$conn = new mysqli($servername, $username, $password, $dbname);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    throw new Exception("Connection failed: " . $e->getMessage());
 
-// Kiểm tra kết nối
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
 }
 ?>
