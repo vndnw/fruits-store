@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 11, 2024 lúc 08:51 AM
+-- Thời gian đã tạo: Th8 12, 2024 lúc 09:54 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -66,23 +66,28 @@ INSERT INTO `categories` (`id`, `name`, `description`) VALUES
 --
 -- Cấu trúc bảng cho bảng `orders`
 --
-
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
-  `customer_phone` varchar(20) NOT NULL,
-  `customer_address` text NOT NULL,
-  `order_date` datetime NOT NULL,
-  `status` enum('pending','processed','shipped','delivered','canceled') NOT NULL,
-  `total_amount` decimal(10,2) NOT NULL
+CREATE TABLE orders (
+  id int(11) NOT NULL,
+  customer_name varchar(255) NOT NULL,
+  customer_phone varchar(20) NOT NULL,
+  customer_address text NOT NULL,
+  order_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  status enum('pending','processed','shipped','delivered','canceled') NOT NULL,
+  total_amount decimal(10,2) NOT NULL,
+  email varchar(255) NOT NULL,
+  note text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `orders`
 --
 
-INSERT INTO `orders` (`id`, `customer_name`, `customer_phone`, `customer_address`, `order_date`, `status`, `total_amount`) VALUES
-(1, 'Nguyễn Văn A', '0987654321', '123 Đường ABC, TP.HCM', '2024-08-01 10:00:00', 'delivered', 75000.00);
+INSERT INTO `orders` (`id`, `customer_name`, `customer_phone`, `customer_address`, `order_date`, `status`, `total_amount`, `email`, `note`) VALUES
+(1, 'Nguyễn Văn A', '0987654321', '123 Đường ABC, TP.HCM', '2024-08-01 10:00:00', 'delivered', 75000.00, 'nguyenvana@gmail.com', 'Cho tôi cái non'),
+(2, 'Võ Ngọc Duy', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 390.00, '', 'giao sớm cho em nha'),
+(3, 'Võ Ngọc Duy', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 390.00, '2251120143@ut.edu.vn', 'Ghi chú gì đó'),
+(4, 'Võ Ngọc Duy', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 390.00, '2251120143@ut.edu.vn', 'Ghi chú gì đó'),
+(5, 'Duy Vo', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 45000.00, '2251120143@ut.edu.vn', 'Ok rồi');
 
 -- --------------------------------------------------------
 
@@ -104,7 +109,11 @@ CREATE TABLE `order_details` (
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
 (1, 1, 1, 2, 60000.00),
-(2, 1, 2, 1, 50000.00);
+(2, 1, 2, 1, 50000.00),
+(3, 4, 3, 1, 40000.00),
+(4, 4, 9, 6, 40000.00),
+(5, 4, 7, 8, 10000.00),
+(6, 5, 5, 1, 15000.00);
 
 -- --------------------------------------------------------
 
@@ -265,13 +274,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `order_vouchers`
