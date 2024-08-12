@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "localhost:3307";
 $username = "root";
 $password = "";
 $dbname = "fruits_shop";
@@ -11,4 +11,4 @@ try {
 } catch (PDOException $e) {
     throw new Exception("Connection failed: " . $e->getMessage());
 }
-
+?>
