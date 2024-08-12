@@ -1,5 +1,12 @@
+<?php
+require_once '../config/connect.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,163 +22,166 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         /* Global Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-/* Header Styles */
-.header-navbar {
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 120px;
-}
+        /* Header Styles */
+        .header-navbar {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 120px;
+        }
 
-.header-navbar__dashboard-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #6586E6;
-}
+        .header-navbar__dashboard-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6586E6;
+        }
 
-.header-navbar__menu {
-    display: flex;
-}
+        .header-navbar__menu {
+            display: flex;
+        }
 
-.header-navbar__menu-item {
-    text-decoration: none;
-    margin: 0 12px;
-    font-size: 1rem;
-    color: #6586E6;
-    transition: color 0.3s;
-}
+        .header-navbar__menu-item {
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 1rem;
+            color: #6586E6;
+            transition: color 0.3s;
+        }
 
-.header-navbar__menu-item:hover {
-    color: #333;
-}
+        .header-navbar__menu-item:hover {
+            color: #333;
+        }
 
-/* Article Styles */
-.article {
-    margin: 40px 120px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        /* Article Styles */
+        .article {
+            margin: 40px 120px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-.add-product {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .add-product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.product-add-new {
-    border: 2px solid #6586E6;
-    background-color: #6586E6;
-    border-radius: 5px;
-    width: 100px;
-    height: 35px;
-    text-decoration: none;
-    text-align: center;
-    transition: background-color 0.3s;
-}
+        .product-add-new {
+            border: 2px solid #6586E6;
+            background-color: #6586E6;
+            border-radius: 5px;
+            width: 100px;
+            height: 35px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
 
-.product-add-new:hover {
-    background-color: #566fb7;
-}
+        .product-add-new:hover {
+            background-color: #566fb7;
+        }
 
-.product-add-new p {
-    font-size: 14px;
-    margin: 0;
-    color: #ffffff;
-    font-weight: 500;
-    line-height: 35px;
-}
+        .product-add-new p {
+            font-size: 14px;
+            margin: 0;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 35px;
+        }
 
-/* Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-    font-size: 0.9rem;
-}
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
 
-/* Header Row */
-thead tr {
-    background-color: #e0e7ff;
-    color: #333;
-    font-weight: 600;
-}
+        /* Header Row */
+        thead tr {
+            background-color: #e0e7ff;
+            color: #333;
+            font-weight: 600;
+        }
 
-/* Even Rows */
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+        /* Even Rows */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-/* Hover Effect */
-tr:hover {
-    background-color: #f1f1f1;
-}
+        /* Hover Effect */
+        tr:hover {
+            background-color: #f1f1f1;
+        }
 
-caption {
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
+        caption {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
 
-/* Button Styles */
-button {
-    border: none;
-    border-radius: 5px;
-    width: 80px;
-    height: 35px;
-    color: #ffffff;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        /* Button Styles */
+        button {
+            border: none;
+            border-radius: 5px;
+            width: 80px;
+            height: 35px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.button-edit {
-    background-color: #34a853; /* Green */
-}
+        .button-edit {
+            background-color: #34a853;
+            /* Green */
+        }
 
-.button-edit:hover {
-    background-color: #2e8b57;
-}
+        .button-edit:hover {
+            background-color: #2e8b57;
+        }
 
-.button-delete {
-    background-color: #ea4335; /* Red */
-}
+        .button-delete {
+            background-color: #ea4335;
+            /* Red */
+        }
 
-.button-delete:hover {
-    background-color: #c62828;
-}
+        .button-delete:hover {
+            background-color: #c62828;
+        }
 
-.button-preview {
-    background-color: #fbbc05; /* Yellow */
-}
+        .button-preview {
+            background-color: #fbbc05;
+            /* Yellow */
+        }
 
-.button-preview:hover {
-    background-color: #f9a825;
-}
+        .button-preview:hover {
+            background-color: #f9a825;
+        }
 
-/* Hidden Header for Future Use */
-h3 {
-    text-align: center;
-    display: none;
-}
-
+        /* Hidden Header for Future Use */
+        h3 {
+            text-align: center;
+            display: none;
+        }
     </style>
 </head>
 
@@ -209,90 +219,29 @@ h3 {
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Dâu Đà Lạt</td>
-                        <td>Tươi ngon từ Đà Lạt</td>
-                        <td>dau.jpg</td>
-                        <td>900000</td>
-                        <td>50000</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                            <a href=""><button class="button-preview">Xem trước</button></a>
-                        </td>
-                    </tr>
+                    <?php
+                    $stmt = $conn->prepare("SELECT * FROM products");
+                    $stmt->execute();
+                    $products = $stmt->fetchAll();
+                    foreach ($products as $index => $product): ?>
+                        <tr>
+                            <td><?php echo $index ?></td>
+                            <td><?php echo $product['name'] ?></td>
+                            <td><?php echo $product['description'] ?></td>
+                            <td>dau.jpg</td>
+                            <td><?php echo number_format($product['old_price']) ?></td>
+                            <td><?php echo number_format($product['current_price']) ?></td>
+                            <td>
+                                <a href="<?php echo 'update_product.php?id=' . $product['id'] ?>"><button
+                                        class="button-edit">Chỉnh sửa</button></a>
+                                <a href=""><button class="button-delete">Xoá</button></a>
+                                <a href=""><button class="button-preview">Xem trước</button></a>
+                            </td>
+                        </tr>
+                    <?php endforeach;
+                    ?>
 
-                    <tr>
-                        <td>2</td>
-                        <td>Dâu Đà Lạt</td>
-                        <td>Tươi ngon từ Đà Lạt</td>
-                        <td>dau.jpg</td>
-                        <td>900000</td>
-                        <td>50000</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                            <a href=""><button class="button-preview">Xem trước</button></a>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>3</td>
-                        <td>Dâu Đà Lạt</td>
-                        <td>Tươi ngon từ Đà Lạt</td>
-                        <td>dau.jpg</td>
-                        <td>900000</td>
-                        <td>50000</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                            <a href=""><button class="button-preview">Xem trước</button></a>
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td>4</td>
-                        <td>Dâu Đà Lạt</td>
-                        <td>Tươi ngon từ Đà Lạt</td>
-                        <td>dau.jpg</td>
-                        <td>900000</td>
-                        <td>50000</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                            <a href=""><button class="button-preview">Xem trước</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>5</td>
-                        <td>Dâu Đà Lạt</td>
-                        <td>Tươi ngon từ Đà Lạt</td>
-                        <td>dau.jpg</td>
-                        <td>900000</td>
-                        <td>50000</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                            <a href=""><button class="button-preview">Xem trước</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>6</td>
-                        <td>Dâu Đà Lạt</td>
-                        <td>Tươi ngon từ Đà Lạt</td>
-                        <td>dau.jpg</td>
-                        <td>900000</td>
-                        <td>50000</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                            <a href=""><button class="button-preview">Xem trước</button></a>
-                        </td>
-                    </tr>
-                    
                 </tbody>
             </table>
         </article>
@@ -302,4 +251,5 @@ h3 {
         </footer>
     </div>
 </body>
+
 </html>

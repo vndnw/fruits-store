@@ -1,5 +1,12 @@
+<?php
+require_once '../config/connect.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,7 +87,9 @@
             font-weight: 500;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -115,7 +124,8 @@
         }
 
         .button-save {
-            background-color: #34a853; /* Green */
+            background-color: #34a853;
+            /* Green */
         }
 
         .button-save:hover {
@@ -123,13 +133,13 @@
         }
 
         .button-cancel {
-            background-color: #ea4335; /* Red */
+            background-color: #ea4335;
+            /* Red */
         }
 
         .button-cancel:hover {
             background-color: #c62828;
         }
-
     </style>
 </head>
 
@@ -144,7 +154,17 @@
                 <a class="header-navbar__menu-item" href="">Orders</a>
             </div>
         </header>
+        <?php
 
+        $id = $_GET['id'];
+        $stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo $result;
+
+
+        ?>
         <article class="article">
             <h1>Edit Product</h1>
             <form action="/edit-product" method="post" enctype="multipart/form-data">
@@ -193,4 +213,5 @@
         </footer>
     </div>
 </body>
+
 </html>

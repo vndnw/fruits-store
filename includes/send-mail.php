@@ -1,10 +1,9 @@
 <?php
-
 require "PHPMailer-master/src/PHPMailer.php";
 require "PHPMailer-master/src/SMTP.php";
 require "PHPMailer-master/src/Exception.php";
 
-function sendEmail($to, $subject, $body, $from = 'vndnetwork@gmail.com', $fromName = 'FRUITS SHOP')
+function sendEmail($to, $subject, $body, $from = 'fruitsshop4388@gmail.com', $fromName = 'FRUITS SHOP')
 {
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
@@ -14,8 +13,8 @@ function sendEmail($to, $subject, $body, $from = 'vndnetwork@gmail.com', $fromNa
         $mail->CharSet = "utf-8";
         $mail->Host = 'smtp.gmail.com'; // Địa chỉ server
         $mail->SMTPAuth = true;
-        $mail->Username = 'vndnetwork@gmail.com';
-        $mail->Password = 'lvql xaah ofwb ueoo'; // mật khẩu ứng dụng
+        $mail->Username = 'fruitsshop4388@gmail.com';
+        $mail->Password = 'ymqn aimi eocz sfrj'; // mật khẩu ứng dụng
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
