@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['product_name'];
     $productPrice = $_POST['product_price'];
     $quantity = $_POST['quantity'];
+    $image = $_POST['image'];
 
     // Validate form data
     if (empty($productId) || empty($productName) || empty($productPrice) || empty($quantity)) {
@@ -19,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'id' => $productId,
         'name' => $productName,
         'price' => $productPrice,
-        'quantity' => $quantity
+        'quantity' => $quantity,
+        'image' => $image
     ];
 
     // Add the item to the cart session

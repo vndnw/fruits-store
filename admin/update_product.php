@@ -160,8 +160,7 @@ require_once '../config/connect.php';
         $stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo $result;
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
         ?>
@@ -170,12 +169,14 @@ require_once '../config/connect.php';
             <form action="/edit-product" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="product-name">Tên sản phẩm</label>
-                    <input type="text" id="product-name" name="product_name" value="Existing Product Name" required>
+                    <input type="text" id="product-name" name="product_name" value="<?php echo $product['name'] ?>"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Mô tả</label>
-                    <textarea id="description" name="description" required>Existing product description</textarea>
+                    <textarea id="description" name="description"
+                        required><?php echo $product['description'] ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -185,12 +186,14 @@ require_once '../config/connect.php';
 
                 <div class="form-group">
                     <label for="old-price">Giá cũ</label>
-                    <input type="number" id="old-price" name="old_price" value="Existing old price" required>
+                    <input id="old-price" name="old_price" value="<?php echo number_format($product['old_price']) ?>"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="new-price">Giá mới</label>
-                    <input type="number" id="new-price" name="new_price" value="Existing new price" required>
+                    <input id="new-price" name="new_price"
+                        value="<?php echo number_format($product['current_price']) ?>" required>
                 </div>
 
                 <div class="form-group">

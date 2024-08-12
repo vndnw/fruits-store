@@ -53,7 +53,7 @@
 
                 <div class="checkout__cart-item">
                   <div class="checkout__cart-item-img">
-                    <img src="./assets/img/checkout/buoi-da-xanh.jpg" alt="" class="checkout__cart-item-img-box" />
+                    <img src="<?php echo $item['image']; ?>" alt="" class="checkout__cart-item-img-box" />
                   </div>
                   <div class="checkout__cart-item-info">
                     <h3 class="checkout__cart-item-title"><?php echo $item['name']; ?></h3>

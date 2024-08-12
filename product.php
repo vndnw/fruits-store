@@ -5,7 +5,7 @@
 <?php
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $stmt = $conn->prepare("SELECT name,description, old_price, current_price,100 * (old_price - current_price) / old_price AS sale_off   FROM products WHERE id = :id");
+    $stmt = $conn->prepare("SELECT name, description, image, old_price, current_price,100 * (old_price - current_price) / old_price AS sale_off   FROM products WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
     $product = $stmt->fetch();
@@ -17,11 +17,11 @@ if (isset($_GET['id'])) {
             <div class="grid__column-12 page-product">
                 <div class="grid__column-5 img-product">
                     <div class="wrapper-img-product-item">
-                        <img class="img-product-item" src="./assets/img/products/chaucay.jpg" alt="">
+                        <img class="img-product-item" src="<?php echo $product['image']; ?>" alt="">
                     </div>
 
                     <!-- Slideshow img -->
-                    <div class="slideshow-img">
+                    <div style="visibility: hidden;" class="slideshow-img">
                         <div class="list-Img">
                             <div class="myImg fade">
                                 <img src="./assets/img/slides/slide1.png">
@@ -119,6 +119,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <div style="width: 40px; padding: 0;">
                                         <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                        <input type="hidden" name="image" value="<?php echo $product['image']; ?>">
                                         <input type="hidden" name="product_name"
                                             value="<?php echo $product['name']; ?>">
                                         <input type="hidden" name="product_price"

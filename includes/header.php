@@ -92,8 +92,7 @@
                                             foreach ($cartItems as $item): ?>
 
                                                 <li class="header__cart-item">
-                                                    <img src="./assets/img/products/strawberry.jpg" alt=""
-                                                        class="header__cart-img">
+                                                    <img src="<?php echo $item['image']; ?>" alt="" class="header__cart-img">
                                                     <div class="header__cart-item-info">
                                                         <div class="header__cart-item-head">
                                                             <h5 class="header__cart-item-name"><?php echo $item['name']; ?></h5>

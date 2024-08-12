@@ -79,7 +79,8 @@
                             <div class="grid__column-2">
                                 <a class="home-product-item" href="./product.php?id=<?php echo $product['id']; ?>">
                                     <div class="home-product-item__img"
-                                        style="background-image: url(<?php echo $product['image']; ?>);"></div>
+                                        style="background-image: url(<?php echo $product['image']; ?>);">
+                                    </div>
                                     <h4 class="home-product-item__name"><?php echo $product['name']; ?></h4>
 
                                     <div class="home-product-item__price">
