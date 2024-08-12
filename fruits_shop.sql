@@ -40,7 +40,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`, `email`, `phone`) VALUES
-(1, 'admin', '0192023a7bbd73250516f069df18b500', 'admin@example.com', '0123456789');
+(1, 'admin', '123456', 'admin@example.com', '0123456789');
 
 -- --------------------------------------------------------
 

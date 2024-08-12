@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xobbee - Add New Order</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header-navbar {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 120px;
+        }
+
+        .header-navbar__dashboard-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6586E6;
+        }
+
+        .header-navbar__menu {
+            display: flex;
+        }
+
+        .header-navbar__menu-item {
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 1rem;
+            color: #6586E6;
+            transition: color 0.3s;
+        }
+
+        .header-navbar__menu-item:hover {
+            color: #333;
+        }
+
+        /* Article Styles */
+        .article {
+            margin: 40px 120px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        /* Button Styles */
+        .form-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .form-buttons button {
+            border: none;
+            border-radius: 5px;
+            width: 100px;
+            height: 35px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-submit {
+            background-color: #34a853; /* Green */
+        }
+
+        .button-submit:hover {
+            background-color: #2e8b57;
+        }
+
+        .button-cancel {
+            background-color: #ea4335; /* Red */
+        }
+
+        .button-cancel:hover {
+            background-color: #c62828;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header-navbar">
+            <h2 class="header-navbar__dashboard-name">Dashboard</h2>
+
+            <div class="header-navbar__menu">
+                <a class="header-navbar__menu-item" href="">Products</a>
+                <a class="header-navbar__menu-item" href="">Vouchers</a>
+                <a class="header-navbar__menu-item" href="">Orders</a>
+            </div>
+        </header>
+
+        <article class="article">
+            <h1>Add New Order</h1>
+            <form action="/submit-order" method="post">
+                <div class="form-group">
+                    <label for="customer-name">Tên khách hàng</label>
+                    <input type="text" id="customer-name" name="customer_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone-number">Số điện thoại</label>
+                    <input type="tel" id="phone-number" name="phone_number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Địa chỉ</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-date">Ngày đặt</label>
+                    <input type="date" id="order-date" name="order_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Trạng thái</label>
+                    <select id="status" name="status" required>
+                        <option value="pending">Chờ xác nhận</option>
+                        <option value="processing">Đang xử lý</option>
+                        <option value="completed">Đã hoàn thành</option>
+                        <option value="cancelled">Đã hủy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="total-amount">Tổng tiền</label>
+                    <input type="number" id="total-amount" name="total_amount" required>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="button-submit">Lưu</button>
+                    <a href="/orders"><button type="button" class="button-cancel">Hủy</button></a>
+                </div>
+            </form>
+        </article>
+
+        <footer>
+
+        </footer>
+    </div>
+</body>
+</html>
