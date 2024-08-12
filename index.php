@@ -90,12 +90,13 @@
                                             class="home-product-item__price-current"><?php echo number_format($product['current_price']); ?>đ</span>
                                     </div>
 
-                                    <div class="home-product-item__add">
+                                    <form action="cart.php=<?php echo $product['id'] ?>" method="GET"
+                                        class="home-product-item__add">
                                         <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
                                         <span>
                                             <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
                                         </span>
-                                    </div>
+                                    </form>
 
                                     <div class="home-product-item__favourite">
                                         <i class="fa-solid fa-check"></i>

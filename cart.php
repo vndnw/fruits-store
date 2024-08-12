@@ -44,13 +44,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['cart'][] = $cartItem;
     }
 
-    var_export($_SESSION['cart']);
-    // session_destroy();
-    // Redirect to the cart page or display a success message
-    // header('Location: cart_view.php');
+    if ($_POST['action'] === 'buy-now') {
+        header('Location: checkout.php');
+        exit;
+    }
     header('location: ' . $_SERVER['HTTP_REFERER']);
-
     exit;
+} else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['action']) && $_GET['action'] === 'remove') {
+        $productId = $_GET['id'];
+        foreach ($_SESSION['cart'] as $index => $item) {
+            if ($item['id'] == $productId) {
+                unset($_SESSION['cart'][$index]);
+                break;
+            }
+        }
+        header('location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
 } else {
     die('Invalid request method');
 }

@@ -59,12 +59,12 @@
                     <h3 class="checkout__cart-item-title"><?php echo $item['name']; ?></h3>
                     <div class="checkout__cart-item-price"><?php echo number_format($item['price']); ?>đ</div>
                     <div class="checkout__cart-item-actions">
-                      <div class="checkout__cart-item-delete">
+                      <a href="cart.php?action=remove&id=<?php echo $item['id'] ?>" class="checkout__cart-item-delete">
                         <i class="fa-solid fa-trash-can"></i>
-                      </div>
+                      </a>
                       <div class="checkout__cart-item-action">
                         <button type="button" class="checkout__cart-item-btn">-</button>
-                        <input class="checkout__cart-item-quantity-input" type="text"
+                        <input class="checkout__cart-item-quantity-input" type="number" min="1"
                           value="<?php echo $item['quantity']; ?>" />
 
                         <button type="button" class="checkout__cart-item-btn">+</button>
@@ -77,7 +77,7 @@
             ?>
 
           </div>
-          <?php if (!$isCart) {
+          <?php if (!$isCart || empty($cartItems)) {
             echo "<h2 class='checkout__cart-empty'>Giỏ hàng trống</h2>";
           } else { ?>
             <div class="checkout__cart-voucher">

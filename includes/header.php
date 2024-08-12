@@ -33,7 +33,7 @@
 
                     <ul class="header__navbar-list header__navbar-list-info">
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item-link" href="">TRANG CHỦ</a>
+                            <a class="header__navbar-item-link" href="/">TRANG CHỦ</a>
                         </li>
                         <li class="header__navbar-item header__navbar-item--separate">
                             <a class="header__navbar-item-link" href="">SẢN PHẨM</a>
@@ -109,7 +109,8 @@
                                                             <span class="header__cart-item-description">
                                                                 <!-- Loại: Hộp 250g -->
                                                             </span>
-                                                            <span class="header__cart-item-remove">Xoá</span>
+                                                            <a href="cart.php?action=remove&id=<?php echo $item['id'] ?>" class="
+                                                                header__cart-item-remove">Xoá</a>
                                                         </div>
                                                     </div>
                                                 </li>
