@@ -27,16 +27,16 @@
         <header class="header">
             <div class="grid">
                 <nav class="header__navbar header__navbar-list">
-                    <a class="header__navbar-list header__navbar-logo" href="/">
+                    <a class="header__navbar-list header__navbar-logo" href="">
                         <img style="height: 70px; width: 70px;" src="./assets/img/header/logo.png" alt="logo">
                     </a>
 
                     <ul class="header__navbar-list header__navbar-list-info">
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item-link" href="/">TRANG CHỦ</a>
+                            <a class="header__navbar-item-link" href="">TRANG CHỦ</a>
                         </li>
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item-link" href="">SẢN PHẨM</a>
+                            <a class="header__navbar-item-link" href="#product">SẢN PHẨM</a>
                         </li>
                         <li class="header__navbar-item">
                             <a class="header__navbar-item" href="">
