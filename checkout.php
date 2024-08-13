@@ -1,4 +1,5 @@
-<?php include 'includes/header.php'; ?>
+<?php
+include 'includes/header.php'; ?>
 <!-- Container -->
 <main class="container">
   <div class="grid">
@@ -81,9 +82,26 @@
             echo "<h2 class='checkout__cart-empty'>Giỏ hàng trống</h2>";
           } else { ?>
             <div class="checkout__cart-voucher">
-              <input type="text" class="checkout__cart-voucher-input" placeholder="Mã giảm giá" />
-              <button type="button" class="checkout__cart-voucher-btn">Áp dụng</button>
+              <form class="checkout__cart-voucher-input-group">
+                <input name="voucher_code" value="" type="text" class="checkout__cart-voucher-input"
+                  placeholder="Mã giảm giá" />
+                <button type="submit" class="checkout__cart-voucher-btn">Áp dụng</button>
+              </form>
+              <?php
+              if (isset($_SESSION['error'])) {
+                echo "<p style='color:red;' class='checkout__cart-voucher-msg'>" . $_SESSION['error'] . "</p>";
+                unset($_SESSION['error']);
+              } else if (isset($_SESSION['description'])) {
+                echo "<p style='color:green;' class='checkout__cart-voucher-msg'>" . $_SESSION['description'] . "</p>";
+                unset($_SESSION['description']);
+              }
+              if (isset($_SESSION['discount'])) {
+
+                echo $_SESSION['discount'];
+              }
+              ?>
             </div>
+
             <div class="checkout__cart-fee">
               <div class="checkout__cart-fee-item">
                 <span class="checkout__cart-fee-title">Tạm tính</span>

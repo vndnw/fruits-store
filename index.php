@@ -13,15 +13,15 @@
 <!-- Slideshow container -->
 <div class="slideshow-container">
     <div class="mySlides fade">
-        <img src="./assets/img/slides/slide1.png">
+        <img src="./uploads/slides/slide1.png">
     </div>
 
     <div class="mySlides fade">
-        <img src="./assets/img/slides/slide2.png">
+        <img src="./uploads/slides/slide2.png">
     </div>
 
     <div class="mySlides fade">
-        <img src="./assets/img/slides/slide3.png">
+        <img src="./uploads/slides/slide3.png">
     </div>
 
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
