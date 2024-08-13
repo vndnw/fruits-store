@@ -1,5 +1,10 @@
+<?php
+require_once '../config/connect.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,7 +105,8 @@
             margin-top: 20px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
@@ -143,7 +149,8 @@
         }
 
         .button-edit {
-            background-color: #34a853; /* Green */
+            background-color: #34a853;
+            /* Green */
         }
 
         .button-edit:hover {
@@ -151,7 +158,8 @@
         }
 
         .button-delete {
-            background-color: #ea4335; /* Red */
+            background-color: #ea4335;
+            /* Red */
         }
 
         .button-delete:hover {
@@ -159,7 +167,8 @@
         }
 
         .button-preview {
-            background-color: #fbbc05; /* Yellow */
+            background-color: #fbbc05;
+            /* Yellow */
         }
 
         .button-preview:hover {
@@ -209,76 +218,29 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>SUMMER2024</td>
-                        <td>Giảm giá mùa hè</td>
-                        <td>20%</td>
-                        <td>01/06/2024</td>
-                        <td>31/08/2024</td>
-                        <td>Active</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
+                    <?php
+                    $stmt = $conn->prepare("SELECT * FROM vouchers");
+                    $stmt->execute();
+                    $vouchers = $stmt->fetchAll();
+                    foreach ($vouchers as $index => $voucher): ?>
+                        <tr>
+                            <td><?php echo $index ?></td>
+                            <td><?php echo $voucher['code'] ?></td>
+                            <td><?php echo $voucher['description'] ?></td>
+                            <td><?php echo number_format($voucher['discount_percentage']) ?>%</td>
+                            <td><?php echo $voucher['valid_from'] ?></td>
+                            <td><?php echo $voucher['valid_to'] ?></td>
+                            <td><?php echo $voucher['status'] ?></td>
+                            <td>
+                                <a href="<?php echo 'update_voucher.php?id=' . $voucher['id'] ?>"><button
+                                        class="button-edit">Chỉnh sửa</button></a>
+                                <a href="<?php echo 'update_voucher.php?id=' . $voucher['id'] ?>"><button
+                                        class="button-delete">Xoá</button></a>
+                            </td>
+                        </tr>
+                    <?php endforeach;
+                    ?>
 
-                    <tr>
-                        <td>2</td>
-                        <td>WINTER2024</td>
-                        <td>Giảm giá mùa đông</td>
-                        <td>15%</td>
-                        <td>01/12/2024</td>
-                        <td>28/02/2025</td>
-                        <td>Inactive</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>3</td>
-                        <td>NEWYEAR2024</td>
-                        <td>Giảm giá năm mới</td>
-                        <td>10%</td>
-                        <td>25/12/2023</td>
-                        <td>10/01/2024</td>
-                        <td>Active</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>4</td>
-                        <td>SPRING2024</td>
-                        <td>Giảm giá mùa xuân</td>
-                        <td>25%</td>
-                        <td>01/03/2024</td>
-                        <td>31/05/2024</td>
-                        <td>Inactive</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>5</td>
-                        <td>AUTUMN2024</td>
-                        <td>Giảm giá mùa thu</td>
-                        <td>30%</td>
-                        <td>01/09/2024</td>
-                        <td>30/11/2024</td>
-                        <td>Active</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-                </tbody>
             </table>
         </article>
 
@@ -287,4 +249,5 @@
         </footer>
     </div>
 </body>
+
 </html>

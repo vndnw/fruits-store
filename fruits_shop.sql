@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 12, 2024 lúc 09:54 AM
+-- Thời gian đã tạo: Th8 12, 2024 lúc 06:51 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `fruits_shop`
+-- Cơ sở dữ liệu: `okchua`
 --
 
 -- --------------------------------------------------------
@@ -40,7 +40,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`, `email`, `phone`) VALUES
-(1, 'admin', '123456', 'admin@example.com', '0123456789');
+(1, 'admin', '0192023a7bbd73250516f069df18b500', 'admin@example.com', '0123456789');
 
 -- --------------------------------------------------------
 
@@ -66,16 +66,17 @@ INSERT INTO `categories` (`id`, `name`, `description`) VALUES
 --
 -- Cấu trúc bảng cho bảng `orders`
 --
-CREATE TABLE orders (
-  id int(11) NOT NULL,
-  customer_name varchar(255) NOT NULL,
-  customer_phone varchar(20) NOT NULL,
-  customer_address text NOT NULL,
-  order_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  status enum('pending','processed','shipped','delivered','canceled') NOT NULL,
-  total_amount decimal(10,2) NOT NULL,
-  email varchar(255) NOT NULL,
-  note text DEFAULT NULL
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `customer_phone` varchar(20) NOT NULL,
+  `customer_address` text NOT NULL,
+  `order_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` enum('pending','processed','shipped','delivered','canceled') NOT NULL,
+  `total_amount` decimal(10,2) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `note` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -87,7 +88,11 @@ INSERT INTO `orders` (`id`, `customer_name`, `customer_phone`, `customer_address
 (2, 'Võ Ngọc Duy', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 390.00, '', 'giao sớm cho em nha'),
 (3, 'Võ Ngọc Duy', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 390.00, '2251120143@ut.edu.vn', 'Ghi chú gì đó'),
 (4, 'Võ Ngọc Duy', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 390.00, '2251120143@ut.edu.vn', 'Ghi chú gì đó'),
-(5, 'Duy Vo', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 45000.00, '2251120143@ut.edu.vn', 'Ok rồi');
+(5, 'Duy Vo', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '0000-00-00 00:00:00', 'pending', 45000.00, '2251120143@ut.edu.vn', 'Ok rồi'),
+(6, 'dsfas', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '2024-08-12 15:08:47', 'pending', 225000.00, '2251120143@ut.edu.vn', ''),
+(7, 'Duy Vo', '0399517567', '409/40/94/2', '2024-08-12 15:31:38', 'pending', 70000.00, '2251120143@ut.edu.vn', '4324234'),
+(8, 'Duy Vo', '54353453245', 'gsdgfs', '2024-08-12 16:53:04', 'pending', 70000.00, '2251120143@ut.edu.vn', ''),
+(9, 'Duy Vo', '54353453245', 'gsdgfs', '2024-08-12 21:29:06', 'pending', 275000.00, '2251120143@ut.edu.vn', 'fsdafdsfasdasdsdf');
 
 -- --------------------------------------------------------
 
@@ -113,7 +118,13 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `price`
 (3, 4, 3, 1, 40000.00),
 (4, 4, 9, 6, 40000.00),
 (5, 4, 7, 8, 10000.00),
-(6, 5, 5, 1, 15000.00);
+(6, 5, 5, 1, 15000.00),
+(7, 6, 5, 1, 15000.00),
+(8, 6, 6, 6, 30000.00),
+(9, 7, 9, 1, 40000.00),
+(10, 8, 3, 1, 40000.00),
+(11, 9, 2, 1, 45000.00),
+(12, 9, 9, 5, 40000.00);
 
 -- --------------------------------------------------------
 
@@ -155,26 +166,26 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `category_id`, `image`, `old_price`, `current_price`) VALUES
-(1, 'Cam sành', 'Cam tươi ngon từ miền Tây', 1, 'cam_sanh.jpg', 30000.00, 25000.00),
-(2, 'Táo Đà Lạt', 'Táo được trồng ở Đà Lạt, giòn và ngọt', 1, 'tao_dalat.jpg', 50000.00, 45000.00),
-(3, 'Xoài cát Hòa Lộc', 'Xoài cát Hòa Lộc thơm ngon, ngọt lịm', 1, 'xoai_cat_hoa_loc.jpg', 45000.00, 40000.00),
-(4, 'Bưởi da xanh', 'Bưởi da xanh từ Bến Tre, mọng nước', 1, 'buoi_da_xanh.jpg', 60000.00, 55000.00),
-(5, 'Dưa hấu', 'Dưa hấu ngọt mát từ Long An', 1, 'dua_hau.jpg', 20000.00, 15000.00),
-(6, 'Mít Thái', 'Mít Thái thơm ngon, ngọt lịm', 1, 'mit_thai.jpg', 35000.00, 30000.00),
-(7, 'Chuối tiêu', 'Chuối tiêu từ miền Nam, ngọt và thơm', 1, 'chuoi_tieu.jpg', 15000.00, 10000.00),
-(8, 'Nhãn lồng Hưng Yên', 'Nhãn lồng Hưng Yên, ngọt và thơm', 1, 'nhan_long_hung_yen.jpg', 40000.00, 35000.00),
-(9, 'Vải thiều Lục Ngạn', 'Vải thiều Lục Ngạn, ngọt và mọng nước', 1, 'vai_thieu_luc_ngan.jpg', 45000.00, 40000.00),
-(10, 'Mận hậu', 'Mận hậu từ Sơn La, giòn và ngọt', 1, 'man_hau.jpg', 30000.00, 25000.00),
-(11, 'Dừa xiêm', 'Dừa xiêm từ Bến Tre, nước ngọt và thơm', 1, 'dua_xiem.jpg', 25000.00, 20000.00),
-(12, 'Ổi lê', 'Ổi lê từ miền Bắc, giòn và ngọt', 1, 'oi_le.jpg', 20000.00, 15000.00),
-(13, 'Thanh long', 'Thanh long ruột đỏ từ Bình Thuận', 1, 'thanh_long.jpg', 35000.00, 30000.00),
-(14, 'Chôm chôm', 'Chôm chôm từ miền Tây, ngọt và mọng nước', 1, 'chom_chom.jpg', 30000.00, 25000.00),
-(15, 'Mãng cầu xiêm', 'Mãng cầu xiêm từ miền Nam, ngọt và thơm', 1, 'mang_cau_xiem.jpg', 40000.00, 35000.00),
-(16, 'Dâu tây Đà Lạt', 'Dâu tây Đà Lạt, ngọt và mọng nước', 1, 'dau_tay_dalat.jpg', 60000.00, 55000.00),
-(17, 'Quýt đường', 'Quýt đường từ miền Tây, ngọt và thơm', 1, 'quyt_duong.jpg', 30000.00, 25000.00),
-(18, 'Lê ki ma', 'Lê ki ma từ miền Nam, ngọt và thơm', 1, 'le_ki_ma.jpg', 35000.00, 30000.00),
-(19, 'Sầu riêng', 'Sầu riêng từ miền Tây, thơm và béo', 1, 'sau_rieng.jpg', 70000.00, 65000.00),
-(20, 'Măng cụt', 'Măng cụt từ miền Tây, ngọt và thơm', 1, 'mang_cut.jpg', 50000.00, 45000.00);
+(1, 'Cam sành', 'Cam tươi ngon từ miền Tây', 1, 'uploads/products/cam-sanh.jpg', 30000.00, 25000.00),
+(2, 'Táo Đà Lạt', 'Táo được trồng ở Đà Lạt, giòn và ngọt', 1, 'uploads/products/tao-da-lat.jpg', 50000.00, 45000.00),
+(3, 'Xoài cát Hòa Lộc', 'Xoài cát Hòa Lộc thơm ngon, ngọt lịm', 1, 'uploads/products/xoai-cat-hoa-loc.jpg', 45000.00, 40000.00),
+(4, 'Bưởi da xanh', 'Bưởi da xanh từ Bến Tre, mọng nước', 1, 'uploads/products/buoi-da-xanh.jpg', 60000.00, 55000.00),
+(5, 'Dưa hấu', 'Dưa hấu ngọt mát từ Long An', 1, 'uploads/products/dua-hau.jpg', 20000.00, 15000.00),
+(6, 'Mít Thái', 'Mít Thái thơm ngon, ngọt lịm', 1, 'uploads/products/mit-thai.jpg', 35000.00, 30000.00),
+(7, 'Chuối tiêu', 'Chuối tiêu từ miền Nam, ngọt và thơm', 1, 'uploads/products/chuoi-tieu.jpg', 15000.00, 10000.00),
+(8, 'Nhãn lồng Hưng Yên', 'Nhãn lồng Hưng Yên, ngọt và thơm', 1, 'uploads/products/nhan-long.jpg', 40000.00, 35000.00),
+(9, 'Vải thiều Lục Ngạn', 'Vải thiều Lục Ngạn, ngọt và mọng nước', 1, 'uploads/products/vai-thieu.jpg', 45000.00, 40000.00),
+(10, 'Mận hậu', 'Mận hậu từ Sơn La, giòn và ngọt', 1, 'uploads/products/man-hau.jpg', 30000.00, 25000.00),
+(11, 'Dừa xiêm', 'Dừa xiêm từ Bến Tre, nước ngọt và thơm', 1, 'uploads/products/dua-xiem.jpg', 25000.00, 20000.00),
+(12, 'Ổi lê', 'Ổi lê từ miền Bắc, giòn và ngọt', 1, 'uploads/products/oi-le.jpg', 20000.00, 15000.00),
+(13, 'Thanh long', 'Thanh long ruột đỏ từ Bình Thuận', 1, 'uploads/products/thanh-long.jpg', 35000.00, 30000.00),
+(14, 'Chôm chôm', 'Chôm chôm từ miền Tây, ngọt và mọng nước', 1, 'uploads/products/chom-chom.jpg', 30000.00, 25000.00),
+(15, 'Mãng cầu xiêm', 'Mãng cầu xiêm từ miền Nam, ngọt và thơm', 1, 'uploads/products/mang-cau-xiem.jpg', 40000.00, 35000.00),
+(16, 'Dâu tây Đà Lạt', 'Dâu tây Đà Lạt, ngọt và mọng nước', 1, 'uploads/products/dau-tay.jpg', 60000.00, 55000.00),
+(17, 'Quýt đường', 'Quýt đường từ miền Tây, ngọt và thơm', 1, 'uploads/products/quyt-duong.jpg', 30000.00, 25000.00),
+(18, 'Lê ki ma', 'Lê ki ma từ miền Nam, ngọt và thơm', 1, 'uploads/products/le-ki-ma.jpg', 35000.00, 30000.00),
+(19, 'Sầu riêng', 'Sầu riêng từ miền Tây, thơm và béo', 1, 'uploads/products/sau-rieng.jpg', 70000.00, 65000.00),
+(20, 'Măng cụt', 'Măng cụt từ miền Tây, ngọt và thơm', 1, 'uploads/products/mang-cut.jpg', 50000.00, 45000.00);
 
 -- --------------------------------------------------------
 
@@ -274,13 +285,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `order_vouchers`

@@ -516,7 +516,7 @@
 .home-product-item__img {
     padding-top: 100%;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: top center;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;

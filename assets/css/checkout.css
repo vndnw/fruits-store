@@ -42,9 +42,9 @@
     display: flex;
 }
 .checkout__cart-item-img-box {
-
+    height: 80px;
     width: 80px;
-    object-fit: contain ;
+    object-fit: cover ;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -64,13 +64,15 @@
     text-align: right;
 }
 .checkout__cart-item-delete i {
+    color: black;
     font-size: 1.6rem;
     padding: 10px;
     cursor: pointer;
 }
 
 .checkout__cart-item-quantity-input {
-    width: 30px;
+    text-align: center;
+    width: 50px;
     font-size: 1.6rem;
     font-weight: 400;
     padding: 5px 10px ;
@@ -81,6 +83,17 @@
     outline: none;
 
 }
+/* Đối với Chrome, Safari, Edge và Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+/* Đối với Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .checkout__cart-item-btn {
     font-size: 1.6rem;
     font-weight: 900;

@@ -169,18 +169,28 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 <a class="header-navbar__menu-item" href="">Orders</a>
             </div>
         </header>
+        <?php
 
+        $id = $_GET['id'];
+        $stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo $result;
+
+
+        ?>
         <article class="article">
             <h1>Edit Product</h1>
             <form action="/edit-product" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="product-name">Tên sản phẩm</label>
-                    <input type="text" id="product-name" name="product_name" value="<?php echo htmlspecialchars($result['product_name']); ?>" required>
+                    <input type="text" id="product-name" name="product_name" value="Existing Product Name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Mô tả</label>
-                    <textarea id="description" name="description" required><?php echo htmlspecialchars($result['description']); ?></textarea>
+                    <textarea id="description" name="description" required>Existing product description</textarea>
                 </div>
 
                 <div class="form-group">
@@ -195,12 +205,12 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 <div class="form-group">
                     <label for="old-price">Giá cũ</label>
-                    <input type="number" id="old-price" name="old_price" value="<?php echo htmlspecialchars($result['old_price']); ?>" required>
+                    <input type="number" id="old-price" name="old_price" value="Existing old price" required>
                 </div>
 
                 <div class="form-group">
                     <label for="new-price">Giá mới</label>
-                    <input type="number" id="new-price" name="new_price" value="<?php echo htmlspecialchars($result['new_price']); ?>" required>
+                    <input type="number" id="new-price" name="new_price" value="Existing new price" required>
                 </div>
 
                 <div class="form-group">

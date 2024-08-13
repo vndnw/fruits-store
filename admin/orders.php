@@ -1,5 +1,11 @@
+<?php
+require_once '../config/connect.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +31,6 @@
 
         /* Header Styles */
         .header-navbar {
-            width: 1200px;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -97,7 +102,8 @@
         /* Table Styles */
         .wrapper {
             max-width: 100%;
-            overflow-x: auto; /* Add horizontal scroll if content overflows */
+            overflow-x: auto;
+            /* Add horizontal scroll if content overflows */
         }
 
         table {
@@ -106,13 +112,16 @@
             margin-top: 20px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
             font-size: 0.9rem;
-            overflow: hidden; /* Ensure no overflow by default */
-            box-sizing: border-box; /* Include padding in width/height calculations */
+            overflow: hidden;
+            /* Ensure no overflow by default */
+            box-sizing: border-box;
+            /* Include padding in width/height calculations */
         }
 
         /* Column-specific styles */
@@ -121,12 +130,20 @@
         td:nth-child(3),
         td:nth-child(4),
         td:nth-child(5),
-        td:nth-child(6), /* Tên khách hàng */
-        td:nth-child(7), /* Email */
-        td:nth-child(8)  /* Địa chỉ */ {
-            max-width: 150px; /* Adjust as needed */
-            overflow: auto; /* Add scroll bar if content exceeds width */
-            white-space: nowrap; /* Prevent text from wrapping */
+        td:nth-child(6),
+        /* Tên khách hàng */
+        td:nth-child(7),
+        /* Email */
+        td:nth-child(8)
+
+        /* Địa chỉ */
+            {
+            max-width: 150px;
+            /* Adjust as needed */
+            overflow: auto;
+            /* Add scroll bar if content exceeds width */
+            white-space: nowrap;
+            /* Prevent text from wrapping */
         }
 
         th:nth-child(1),
@@ -134,36 +151,49 @@
         th:nth-child(3),
         th:nth-child(4),
         th:nth-child(5),
-        th:nth-child(6), /* Tên khách hàng */
-        th:nth-child(7), /* Email */
-        th:nth-child(8)  /* Địa chỉ */ {
-            max-width: 150px; /* Adjust as needed */
-            overflow: auto; /* Add scroll bar if content exceeds width */
-            white-space: nowrap; /* Prevent text from wrapping */
+        th:nth-child(6),
+        /* Tên khách hàng */
+        th:nth-child(7),
+        /* Email */
+        th:nth-child(8)
+
+        /* Địa chỉ */
+            {
+            max-width: 150px;
+            /* Adjust as needed */
+            overflow: auto;
+            /* Add scroll bar if content exceeds width */
+            white-space: nowrap;
+            /* Prevent text from wrapping */
         }
 
         /* Ensure all rows have the same height */
         tr {
-            height: 50px; /* Adjust as needed */
+            height: 50px;
+            /* Adjust as needed */
         }
 
         /* Custom Scrollbar Styles */
         td::-webkit-scrollbar {
-            width: 6px; /* Width of the scrollbar */
+            width: 6px;
+            /* Width of the scrollbar */
             height: 10px;
         }
 
         td::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Track color */
+            background: #f1f1f1;
+            /* Track color */
         }
 
         td::-webkit-scrollbar-thumb {
-            background: #888; /* Scrollbar color */
+            background: #888;
+            /* Scrollbar color */
             border-radius: 3px;
         }
 
         td::-webkit-scrollbar-thumb:hover {
-            background: #555; /* Color on hover */
+            background: #555;
+            /* Color on hover */
         }
 
         /* Header Row */
@@ -202,7 +232,8 @@
         }
 
         .button-edit {
-            background-color: #34a853; /* Green */
+            background-color: #34a853;
+            /* Green */
         }
 
         .button-edit:hover {
@@ -210,7 +241,8 @@
         }
 
         .button-delete {
-            background-color: #ea4335; /* Red */
+            background-color: #ea4335;
+            /* Red */
         }
 
         .button-delete:hover {
@@ -218,7 +250,8 @@
         }
 
         .button-preview {
-            background-color: #fbbc05; /* Yellow */
+            background-color: #fbbc05;
+            /* Yellow */
         }
 
         .button-preview:hover {
@@ -277,110 +310,29 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Nguyễn Văn A</td>
-                        <td>0912345678</td>
-                        <td>nguyenvana@example.com</td>
-                        <td>123 Đường ABC, Quận 1ádsad shdkjhasd kliasjldk klasjdml</td>
-                        <td>01/08/2024</td>
-                        <td>Đang xử lý</td>
-                        <td>1,000,000 VNĐ</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>Trần Thị Bqưewqewqewq</td>
-                        <td>0987654321</td>
-                        <td>tranqưeqwewqewqeqwethib@example.com</td>
-                        <td>456 Đường XYZ, Quận 2</td>
-                        <td>02/08/2024</td>
-                        <td>Đã hoàn thành</td>
-                        <td>500,000 VNĐ</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>3</td>
-                        <td>Lê Văn C</td>
-                        <td>0934567890</td>
-                        <td>levanc@example.com</td>
-                        <td>789 Đường DEF, Quận 3</td>
-                        <td>03/08/2024</td>
-                        <td>Chờ xác nhận</td>
-                        <td>750,000 VNĐ</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>4</td>
-                        <td>Đặng Thị D</td>
-                        <td>0901234567</td>
-                        <td>dangthid@example.com</td>
-                        <td>101 Đường GHI, Quận 4</td>
-                        <td>04/08/2024</td>
-                        <td>Đang xử lý</td>
-                        <td>600,000 VNĐ</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>5</td>
-                        <td>Phạm Văn E</td>
-                        <td>0923456789</td>
-                        <td>phamvane@example.com</td>
-                        <td>202 Đường JKL, Quận 5</td>
-                        <td>05/08/2024</td>
-                        <td>Đã hoàn thành</td>
-                        <td>1,200,000 VNĐ</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>6</td>
-                        <td>Phạm Văn E</td>
-                        <td>0923456789</td>
-                        <td>phamvane@example.com</td>
-                        <td>202 Đường JKL, Quận 5</td>
-                        <td>05/08/2024</td>
-                        <td>Đã hoàn thành</td>
-                        <td>1,200,000 VNĐ</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>7</td>
-                        <td>Phạm Văn E</td>
-                        <td>0923456789</td>
-                        <td>phamvane@example.com</td>
-                        <td>202 Đường JKL, Quận 5</td>
-                        <td>05/08/2024</td>
-                        <td>Đã hoàn thành</td>
-                        <td>1,200,000 VNĐ</td>
-                        <td>
-                            <a href=""><button class="button-edit">Chỉnh sửa</button></a>
-                            <a href=""><button class="button-delete">Xoá</button></a>
-                        </td>
-                    </tr>
+                    <?php
+                    $stmt = $conn->prepare("SELECT * FROM orders");
+                    $stmt->execute();
+                    $orders = $stmt->fetchAll();
+                    foreach ($orders as $index => $order): ?>
+                        <tr>
+                            <td><?php echo $index ?></td>
+                            <td><?php echo $order['customer_name'] ?></td>
+                            <td><?php echo $order['customer_phone'] ?></td>
+                            <td><?php echo $order['email'] ?></td>
+                            <td><?php echo $order['customer_address'] ?></td>
+                            <td><?php echo $order['order_date'] ?></td>
+                            <td><?php echo $order['status'] ?></td>
+                            <td><?php echo number_format($order['total_amount']) ?></td>
+                            <td>
+                                <a href="<?php echo 'update_order.php?id=' . $order['id'] ?>"><button
+                                        class="button-edit">Chỉnh sửa</button></a>
+                                <a href="<?php echo 'update_order.php?id=' . $order['id'] ?>"><button
+                                        class="button-delete">Xoá</button></a>
+                            </td>
+                        </tr>
+                    <?php endforeach;
+                    ?>
                 </tbody>
             </table>
         </article>
@@ -389,4 +341,5 @@
         </footer>
     </div>
 </body>
+
 </html>
