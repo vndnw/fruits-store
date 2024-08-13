@@ -1,8 +1,12 @@
 <?php
 require_once '../config/connect.php';
 
+$id = $_GET['id'];
+$stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
+$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,6 +109,17 @@ require_once '../config/connect.php';
             padding: 0;
         }
 
+        /* Image Preview Styles */
+        .image-preview {
+            margin-top: 15px;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 5px;
+        }
+
         /* Button Styles */
         .form-buttons {
             display: flex;
@@ -154,50 +169,45 @@ require_once '../config/connect.php';
                 <a class="header-navbar__menu-item" href="">Orders</a>
             </div>
         </header>
-        <?php
 
-        $id = $_GET['id'];
-        $stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo $result;
-
-
-        ?>
         <article class="article">
             <h1>Edit Product</h1>
             <form action="/edit-product" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="product-name">Tên sản phẩm</label>
-                    <input type="text" id="product-name" name="product_name" value="Existing Product Name" required>
+                    <input type="text" id="product-name" name="product_name" value="<?php echo htmlspecialchars($result['product_name']); ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Mô tả</label>
-                    <textarea id="description" name="description" required>Existing product description</textarea>
+                    <textarea id="description" name="description" required><?php echo htmlspecialchars($result['description']); ?></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="image">Hình ảnh</label>
                     <input type="file" id="image" name="image" accept="image/*">
+                    <div class="image-preview" id="image-preview">
+                        <?php if (!empty($result['image'])): ?>
+                            <img src="/path/to/images/<?php echo htmlspecialchars($result['image']); ?>" alt="Current Image">
+                        <?php endif; ?>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="old-price">Giá cũ</label>
-                    <input type="number" id="old-price" name="old_price" value="Existing old price" required>
+                    <input type="number" id="old-price" name="old_price" value="<?php echo htmlspecialchars($result['old_price']); ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="new-price">Giá mới</label>
-                    <input type="number" id="new-price" name="new_price" value="Existing new price" required>
+                    <input type="number" id="new-price" name="new_price" value="<?php echo htmlspecialchars($result['new_price']); ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="status">Trạng thái</label>
                     <select id="status" name="status" required>
-                        <option value="in_stock" selected>Còn hàng</option>
-                        <option value="out_of_stock">Hết hàng</option>
+                        <option value="in_stock" <?php echo $result['status'] == 'in_stock' ? 'selected' : ''; ?>>Còn hàng</option>
+                        <option value="out_of_stock" <?php echo $result['status'] == 'out_of_stock' ? 'selected' : ''; ?>>Hết hàng</option>
                     </select>
                 </div>
 
@@ -212,6 +222,26 @@ require_once '../config/connect.php';
 
         </footer>
     </div>
+
+    <script>
+        document.getElementById('image').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const imagePreview = document.getElementById('image-preview');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    imagePreview.innerHTML = ''; // Clear any previous image
+                    imagePreview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.innerHTML = ''; // Clear preview if no file
+            }
+        });
+    </script>
 </body>
 
 </html>

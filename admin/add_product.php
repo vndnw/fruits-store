@@ -96,6 +96,17 @@
             padding: 0;
         }
 
+        /* Image Preview Styles */
+        .image-preview {
+            margin-top: 15px;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 5px;
+        }
+
         /* Button Styles */
         .form-buttons {
             display: flex;
@@ -161,6 +172,9 @@
                 <div class="form-group">
                     <label for="image">Hình ảnh</label>
                     <input type="file" id="image" name="image" accept="image/*" required>
+                    <div class="image-preview" id="image-preview">
+                        <!-- Image will be displayed here -->
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -192,5 +206,25 @@
 
         </footer>
     </div>
+
+    <script>
+        document.getElementById('image').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const imagePreview = document.getElementById('image-preview');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    imagePreview.innerHTML = ''; // Clear any previous image
+                    imagePreview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.innerHTML = ''; // Clear preview if no file
+            }
+        });
+    </script>
 </body>
 </html>

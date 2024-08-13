@@ -73,24 +73,26 @@
                 </ul>
             </div>
             <div class="grid__column-2">
-                <div class="h3 footer__heading">Liên hệ</div>
+                <div class="h3 footer__heading">Chủ đề: Web bán trái cây</div>
                 <ul class="footer-list">
-                    <li class="footer-item">
+                <li class="footer-item">
                         <a href="" class="footer-item__link">
-                            <i class="footer-item__icon fa-solid fa-location-dot"></i>
-                            340/23 Tô Ký/P.15/Q.Tân Bình/TP HCM
+                            Sinh Viên Thực Hiện
                         </a>
                     </li>
                     <li class="footer-item">
                         <a href="" class="footer-item__link">
-                            <i class="footer-item__icon fa-solid fa-square-phone"></i>
-                            0326092480
+                            1. Võ Ngọc Duy - 2251120143
                         </a>
                     </li>
                     <li class="footer-item">
                         <a href="" class="footer-item__link">
-                            <i class="footer-item__icon fa-solid fa-envelope"></i>
-                            hotien804@gmail.com
+                            2. Hồ Đoàn Quyết Tiến - 2251120143
+                        </a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="" class="footer-item__link">
+                            GVHD: Mai Thanh Thảo
                         </a>
                     </li>
                 </ul>
