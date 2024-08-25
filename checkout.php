@@ -12,16 +12,19 @@ include 'includes/header.php'; ?>
           <div class="checkout__form">
             <form class="checkout__form-box">
               <div class="checkout__form-group">
-                <input name="name" type="text" id="name" class="checkout__form-input" placeholder="Họ và tên" />
+                <input required name="name" type="text" id="name" class="checkout__form-input"
+                  placeholder="Họ và tên" />
               </div>
               <div class="checkout__form-group">
-                <input name="email" type="email" id="email" class="checkout__form-input" placeholder="Email" />
+                <input required name="email" type="email" id="email" class="checkout__form-input" placeholder="Email" />
               </div>
               <div class="checkout__form-group">
-                <input name="phone" type="text" id="phone" class="checkout__form-input" placeholder="Số điện thoại" />
+                <input required name="phone" type="text" id="phone" class="checkout__form-input"
+                  placeholder="Số điện thoại" />
               </div>
               <div class="checkout__form-group">
-                <input name="address" type="text" id="address" class="checkout__form-input" placeholder="Địa chỉ" />
+                <input required name="address" type="text" id="address" class="checkout__form-input"
+                  placeholder="Địa chỉ" />
               </div>
               <div class="checkout__form-group">
                 <textarea name="note" id="note" class="checkout__form-textarea" placeholder="Ghi chú"
@@ -44,13 +47,24 @@ include 'includes/header.php'; ?>
         </div>
         <div class="checkout__cart grid__column-5">
           <div class="checkout__cart-item-list">
+
             <?php
-            $isCart = isset($_SESSION['cart']);
-            if ($isCart) {
-              $cartItems = $_SESSION["cart"];
+            $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+            if (!empty($cart)) {
+              include "config/connect.php";
+
+              $productIds = array_keys($cart);
+              $placeholders = rtrim(str_repeat('?,', count($productIds)), ','); // Tạo chuỗi ?,?,?
+            
+              $sql = "SELECT * FROM products WHERE id IN ($placeholders)";
+              $stmt = $conn->prepare($sql);
+              $stmt->execute($productIds);
+
+              $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
               $totalPrice = 0.0;
-              foreach ($cartItems as $item):
-                $totalPrice += $item['price'] * $item['quantity']; ?>
+
+              foreach ($products as $item):
+                $totalPrice += $item['current_price'] * $cart[$item['id']]; ?>
 
                 <div class="checkout__cart-item">
                   <div class="checkout__cart-item-img">
@@ -58,17 +72,17 @@ include 'includes/header.php'; ?>
                   </div>
                   <div class="checkout__cart-item-info">
                     <h3 class="checkout__cart-item-title"><?php echo $item['name']; ?></h3>
-                    <div class="checkout__cart-item-price"><?php echo number_format($item['price']); ?>đ</div>
+                    <div class="checkout__cart-item-price"><?php echo number_format($item['current_price']); ?>đ</div>
                     <div class="checkout__cart-item-actions">
                       <a href="cart.php?action=remove&id=<?php echo $item['id'] ?>" class="checkout__cart-item-delete">
                         <i class="fa-solid fa-trash-can"></i>
                       </a>
                       <div class="checkout__cart-item-action">
-                        <button type="button" class="checkout__cart-item-btn">-</button>
-                        <input class="checkout__cart-item-quantity-input" type="number" min="1"
-                          value="<?php echo $item['quantity']; ?>" />
-
-                        <button type="button" class="checkout__cart-item-btn">+</button>
+                        <button type="button" class="checkout__cart-item-btn minus">-</button>
+                        <input data-product-id="<?php echo $item['id']; ?>"
+                          class="checkout__cart-item-quantity-input quantity" type="number" min="1"
+                          value="<?php echo $cart[$item['id']]; ?>" />
+                        <button type="button" class="checkout__cart-item-btn plus">+</button>
                       </div>
                     </div>
                   </div>
@@ -78,7 +92,7 @@ include 'includes/header.php'; ?>
             ?>
 
           </div>
-          <?php if (!$isCart || empty($cartItems)) {
+          <?php if (!isset($_SESSION['cart'])) {
             echo "<h2 class='checkout__cart-empty'>Giỏ hàng trống</h2>";
           } else { ?>
             <div class="checkout__cart-voucher">

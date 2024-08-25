@@ -80,10 +80,9 @@ if (isset($_GET['id'])) {
 
                         <div class="favourite-product">
                             <i class="icon-product fa-regular fa-heart"></i>
-                            <h3>Đã thích (208)</h3>
+                            <h3>Đã thích (<?php echo mt_rand(49, 99); ?>)</h3>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="grid__column-7 info-product">
@@ -106,15 +105,15 @@ if (isset($_GET['id'])) {
                                     <div><?php echo number_format($product['sale_off']); ?>%</div>
                                 </div>
 
-                                <!-- <div class="pay-product__type-product">
-                                <p>Loại: </p>
-                                <button class="pay-product__type-product-active">Hộp 250g</button>
-                                <button>Hộp 330g</button>
-                            </div> -->
+                                <div class="pay-product__type-product">
+                                    <p>Loại: </p>
+                                    <button class="pay-product__type-product-active">Hộp 250g</button>
+                                    <button>Hộp 330g</button>
+                                </div>
 
                                 <div class="pay-product__quantity-product">
                                     <p>Số lượng: </p>
-                                    <div class="minus" style="cursor: pointer;">
+                                    <div onclick="changeQuantity(-1)" style="cursor: pointer;">
                                         <i class="fa-solid fa-minus"></i>
                                     </div>
                                     <div style="width: 40px; padding: 0;">
@@ -124,11 +123,12 @@ if (isset($_GET['id'])) {
                                             value="<?php echo $product['name']; ?>">
                                         <input type="hidden" name="product_price"
                                             value="<?php echo $product['current_price']; ?>">
-                                        <input style="width: 100%; height:100%; border: none; text-align: center;"
+                                        <input id="quantity"
+                                            style="width: 100%; height:100%; border: none; text-align: center;"
                                             type="number" min="1" name="quantity" value="1">
 
                                     </div>
-                                    <div class="plus" style="cursor: pointer;">
+                                    <div onclick="changeQuantity(1)" style="cursor: pointer;">
                                         <i class="fa-solid fa-plus"></i>
                                     </div>
                                 </div>

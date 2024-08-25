@@ -20,10 +20,23 @@ if (isset($_POST['place_order'])) {
     if ($stmt->execute()) {
         //Lấy ID đơn hàng vừa tạo
         $order_id = $conn->lastInsertId();
-        foreach ($_SESSION['cart'] as $item) {
+
+
+
+        include "config/connect.php";
+        $cart = $_SESSION['cart'];
+        $productIds = array_keys($cart);
+        $placeholders = rtrim(str_repeat('?,', count($productIds)), ','); // Tạo chuỗi ?,?,?
+
+        $sql = "SELECT * FROM products WHERE id IN ($placeholders)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($productIds);
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($products as $item) {
             $product_id = $item['id'];
-            $quantity = $item['quantity'];
-            $price = $item['price'];
+            $quantity = $cart[$item['id']];
+            $price = $item['current_price'];
             $stmt = $conn->prepare("INSERT INTO order_details (order_id, product_id, quantity, price) VALUES (:order_id, :product_id, :quantity, :price)");
             $stmt->bindParam(':order_id', $order_id);
             $stmt->bindParam(':product_id', $product_id);

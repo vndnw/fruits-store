@@ -1,68 +1,40 @@
 <?php
 session_start();
 
-// Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve form data
-    $productId = $_POST['id'];
-    $productName = $_POST['product_name'];
-    $productPrice = $_POST['product_price'];
+    $id = $_POST['id'];
     $quantity = $_POST['quantity'];
-    $image = $_POST['image'];
-
-    // Validate form data
-    if (empty($productId) || empty($productName) || empty($productPrice) || empty($quantity)) {
-        die('Invalid form data');
-    }
-
-    // Create a cart item array
-    $cartItem = [
-        'id' => $productId,
-        'name' => $productName,
-        'price' => $productPrice,
-        'quantity' => $quantity,
-        'image' => $image
-    ];
-
-    // Add the item to the cart session
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-
-    // Check if the product is already in the cart
-    $found = false;
-    foreach ($_SESSION['cart'] as &$item) {
-        if ($item['id'] == $productId) {
-            $item['quantity'] += $quantity;
-            $found = true;
-            break;
-        }
-    }
-
-    // If the product is not in the cart, add it
-    if (!$found) {
-        $_SESSION['cart'][] = $cartItem;
-    }
-
-    if ($_POST['action'] === 'buy-now') {
-        header('Location: checkout.php');
-        exit;
-    }
-    header('location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
-} else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['action']) && $_GET['action'] === 'remove') {
-        $productId = $_GET['id'];
-        foreach ($_SESSION['cart'] as $index => $item) {
-            if ($item['id'] == $productId) {
-                unset($_SESSION['cart'][$index]);
-                break;
-            }
-        }
-        header('location: ' . $_SERVER['HTTP_REFERER']);
-        exit;
-    }
 } else {
-    die('Invalid request method');
+    $id = $_GET['id'];
+    $quantity = 1;
 }
+// Validate product ID and quantity
+if (empty($id) || empty($quantity) || $quantity <= 0) {
+    die('Invalid product ID or quantity');
+}
+
+// Check if the cart session variable exists
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Add or update the product ID and quantity in the cart session
+if (isset($_SESSION['cart'][$id])) {
+    $_SESSION['cart'][$id] += $quantity;
+} else {
+    $_SESSION['cart'][$id] = $quantity;
+}
+
+if ($_POST['action'] === 'buy-now') {
+    header('Location: checkout.php');
+    exit;
+}
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['action']) && $_GET['action'] === 'remove') {
+        $id = $_GET['id'];
+        unset($_SESSION['cart'][$id]);
+    }
+}
+header('location: ' . $_SERVER['HTTP_REFERER']);
+exit;
 ?>

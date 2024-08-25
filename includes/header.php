@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +20,7 @@
     <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="./assets/js/script.js" defer></script>
+    <script src="./assets/js/events.js" defer></script>
 </head>
 
 <body>
@@ -86,10 +88,20 @@
                                     <ul class="header__cart-list-item">
                                         <!-- Cart-item -->
                                         <?php
-                                        if (isset($_SESSION['cart'])) {
+                                        $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+                                        if (!empty($cart)) {
+                                            include "config/connect.php";
 
-                                            $cartItems = $_SESSION["cart"];
-                                            foreach ($cartItems as $item): ?>
+                                            $productIds = array_keys($cart);
+                                            $placeholders = rtrim(str_repeat('?,', count($productIds)), ','); // Tạo chuỗi ?,?,?
+                                        
+                                            $sql = "SELECT * FROM products WHERE id IN ($placeholders)";
+                                            $stmt = $conn->prepare($sql);
+                                            $stmt->execute($productIds);
+
+                                            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                            foreach ($products as $item): ?>
 
                                                 <li class="header__cart-item">
                                                     <img src="<?php echo $item['image']; ?>" alt="" class="header__cart-img">
@@ -98,10 +110,10 @@
                                                             <h5 class="header__cart-item-name"><?php echo $item['name']; ?></h5>
                                                             <div class="header__cart-item-price-wrap">
                                                                 <span
-                                                                    class="header__cart-item-price"><?php echo number_format($item['price']); ?>đ</span>
+                                                                    class="header__cart-item-price"><?php echo number_format($item['current_price']); ?>đ</span>
                                                                 <span class="header__cart-item-multiply">x</span>
                                                                 <span
-                                                                    class="header__cart-item-quantity"><?php echo $item['quantity']; ?></span>
+                                                                    class="header__cart-item-quantity"><?php echo $cart[$item['id']]; ?></span>
                                                             </div>
                                                         </div>
 

@@ -50,7 +50,6 @@
                         <!-- Product item -->
                         <?php
                         $limit = 12;
-
                         $stmt = $conn->prepare("SELECT COUNT(*) as total FROM products");
                         $stmt->execute();
                         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -77,9 +76,9 @@
                         foreach ($products as $product) {
                             ?>
                             <div class="grid__column-2">
-                                <div class="home-product-item" href="./product.php?id=<?php echo $product['id']; ?>">
+                                <div class="home-product-item">
                                     <!-- thẻ a của thông tin sản phẩm -->
-                                    <a href=""> 
+                                    <a href="./product.php?id=<?php echo $product['id']; ?>">
                                         <div class="home-product-item__img"
                                             style="background-image: url(<?php echo $product['image']; ?>);">
                                         </div>
@@ -103,16 +102,14 @@
                                             class="home-product-item__sale-off-percent"><?php echo number_format($product['sale_off']); ?>%</span>
                                         <span class="home-product-item__sale-off-label">GIẢM</span>
                                     </div>
-
                                     <!-- thẻ a của thêm vào giỏ hàng -->
-                                    <a href="">
-                                        <form action="cart.php=<?php echo $product['id'] ?>" method="GET"
-                                            class="home-product-item__add">
+                                    <a href="cart.php?id=<?php echo $product['id'] ?>">
+                                        <div class="home-product-item__add">
                                             <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
                                             <span>
                                                 <i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i>
                                             </span>
-                                        </form>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
