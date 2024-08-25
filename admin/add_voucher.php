@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,7 +81,9 @@
             font-weight: 500;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -111,7 +114,8 @@
         }
 
         .button-save {
-            background-color: #34a853; /* Green */
+            background-color: #34a853;
+            /* Green */
         }
 
         .button-save:hover {
@@ -119,7 +123,8 @@
         }
 
         .button-cancel {
-            background-color: #ea4335; /* Red */
+            background-color: #ea4335;
+            /* Red */
         }
 
         .button-cancel:hover {
@@ -130,15 +135,8 @@
 
 <body>
     <div class="wrapper">
-        <header class="header-navbar">
-            <h2 class="header-navbar__dashboard-name">Dashboard</h2>
 
-            <div class="header-navbar__menu">
-                <a class="header-navbar__menu-item" href="">Products</a>
-                <a class="header-navbar__menu-item" href="">Vouchers</a>
-                <a class="header-navbar__menu-item" href="">Orders</a>
-            </div>
-        </header>
+        <?php include "./header.php" ?>
 
         <article class="article">
             <h1>Add New Voucher</h1>
@@ -188,4 +186,5 @@
         </footer>
     </div>
 </body>
+
 </html>
