@@ -45,27 +45,32 @@ include 'includes/header.php'; ?>
             </form>
           </div>
         </div>
-        <div class="checkout__cart grid__column-5">
-          <div class="checkout__cart-item-list">
+        <div <?php
+        if (isset($_SESSION['orderSuccess'])) {
+          echo 'class="checkout__cart-success grid__column-5"';
+        } else {
+          echo 'class="checkout__cart grid__column-5"';
+        }
+        ?>>
+          <?php
+          $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+          if (!empty($cart) && !isset($_SESSION['orderSuccess'])) {
+            include "config/connect.php";
 
-            <?php
-            $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
-            if (!empty($cart)) {
-              include "config/connect.php";
+            $productIds = array_keys($cart);
+            $placeholders = rtrim(str_repeat('?,', count($productIds)), ','); // Tạo chuỗi ?,?,?
+          
+            $sql = "SELECT * FROM products WHERE id IN ($placeholders)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute($productIds);
 
-              $productIds = array_keys($cart);
-              $placeholders = rtrim(str_repeat('?,', count($productIds)), ','); // Tạo chuỗi ?,?,?
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $totalPrice = 0.0;
 
-              $sql = "SELECT * FROM products WHERE id IN ($placeholders)";
-              $stmt = $conn->prepare($sql);
-              $stmt->execute($productIds);
-
-              $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-              $totalPrice = 0.0;
-
-
-              foreach ($products as $item):
-                $totalPrice += $item['current_price'] * $cart[$item['id']]; ?>
+            ?>
+            <div class="checkout__cart-item-list"> <?php
+            foreach ($products as $item):
+              $totalPrice += $item['current_price'] * $cart[$item['id']]; ?>
 
                 <div class="checkout__cart-item">
                   <div class="checkout__cart-item-img">
@@ -88,20 +93,15 @@ include 'includes/header.php'; ?>
                     </div>
                   </div>
                 </div>
-            <?php endforeach;
-              $shippingFee = $totalPrice > 500000 ? 0 : 30000;
-            }
+              <?php endforeach;
+            $shippingFee = $totalPrice >= 500000 ? 0 : 30000;
             ?>
-
-          </div>
-          <?php if (empty($_SESSION['cart'])) {
-            echo "<h2 class='checkout__cart-empty'>Giỏ hàng trống</h2>";
-          } else { ?>
+            </div>
             <div class="checkout__cart-voucher">
               <form class="checkout__cart-voucher-input-group">
                 <input name="voucher_code" value="" type="text" class="checkout__cart-voucher-input"
                   placeholder="Mã giảm giá" />
-                <button type="submit" class="checkout__cart-voucher-btn">Áp dụng</button>
+                <button disabled type="submit" class="checkout__cart-voucher-btn">Áp dụng</button>
               </form>
               <?php
               if (isset($_SESSION['error'])) {
@@ -131,76 +131,80 @@ include 'includes/header.php'; ?>
               </div>
               <div class="checkout__cart-fee-item">
                 <span class="checkout__cart-fee-title">Tổng cộng</span>
-                <span class="checkout__cart-fee-price"><?php echo (number_format($totalPrice + 30000)) ?>đ</span>
-                <input type="text" name="total-price" hidden value="<?php echo ($totalPrice + 30000) ?>">
+                <span class="checkout__cart-fee-price"><?php echo (number_format($totalPrice + $shippingFee)) ?>đ</span>
+                <input type="text" name="total-price" hidden value="<?php echo ($totalPrice + $shippingFee) ?>">
               </div>
             </div>
             <div class="checkout__cart-btn">
               <button name="place_order" class="checkout__cart-btn-link">Đặt hàng</button>
             </div>
-          <?php }
+            <?php
+
+          } else if (empty($_SESSION['cart']) && !isset($_SESSION['orderSuccess'])) {
+            echo "<h2 class='checkout__cart-empty'>Giỏ hàng trống</h2>";
+          } else { ?>
+              <div class="success-message">
+                <i class="success-icon"></i>
+                <h1>Đặt Hàng Thành Công!</h1>
+                <p>Cảm ơn bạn đã mua hàng. Mã đơn hàng của bạn là
+                  <strong>#<?php echo $_SESSION['order']['id']; ?></strong>.
+                </p>
+              </div>
+
+              <div class="order-details">
+                <h2>Chi Tiết Đơn Hàng</h2>
+                <div class="product-list">
+
+
+                <?php $total_amount = 0.0;
+                foreach ($_SESSION['orderDetails'] as $detail):
+                  $total_amount += $detail['price'] * $detail['quantity']; ?>
+
+                    <div class="product-item">
+                      <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Táo 250g" class="product-image">
+                      <div class="product-info">
+                        <h3><?php echo htmlspecialchars($detail['name']); ?></h3>
+                        <p>Số lượng: <?php echo $detail['quantity']; ?></p>
+                        <p>Giá: <?php echo number_format($detail['price'], 0, ',', '.'); ?>₫</p>
+                      </div>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+              </div>
+
+              <div class="order-total">
+                <h2>Tổng Cộng</h2>
+                <div class="total-breakdown">
+
+                  <?php
+                  $shipping_fee = $total_amount < 500000 ? 30000 : 0;
+                  $temporary_total = $total_amount + $shipping_fee;
+                  ?>
+                  <p>Tạm tính: <span><?php echo number_format($total_amount, 0, ',', '.'); ?>₫</span></p>
+                  <p>Phí vận chuyển: <span><?php echo number_format($shipping_fee, 0, ',', '.'); ?>₫</span></p>
+                  <p class="total-price">Tổng thanh toán:
+                    <span><?php echo number_format($temporary_total, 0, ',', '.'); ?>₫</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <a href="/shop" class="btn btn-primary">Tiếp Tục Mua Sắm</a>
+              </div>
+
+            <?php
+          }
           ?>
-
-
-        </div>
-
-        <div class="checkout__cart-success grid__column-5">
-          <div class="success-message">
-            <i class="success-icon"></i>
-            <h1>Đặt Hàng Thành Công!</h1>
-            <p>Cảm ơn bạn đã mua hàng. Mã đơn hàng của bạn là <strong>#123456</strong>.</p>
-          </div>
-
-          <div class="order-details">
-            <h2>Chi Tiết Đơn Hàng</h2>
-            <div class="product-list">
-              <div class="product-item">
-                <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Táo 250g" class="product-image">
-                <div class="product-info">
-                  <h3>Hộp Táo 250g</h3>
-                  <p>Số lượng: 2</p>
-                  <p>Giá: 400,000₫</p>
-                </div>
-              </div>
-
-              <div class="product-item">
-                <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Cam 330g" class="product-image">
-                <div class="product-info">
-                  <h3>Hộp Cam 330g</h3>
-                  <p>Số lượng: 1</p>
-                  <p>Giá: 400,000₫</p>
-                </div>
-              </div>
-
-              <div class="product-item">
-                <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Cam 330g" class="product-image">
-                <div class="product-info">
-                  <h3>Hộp Cam 330g</h3>
-                  <p>Số lượng: 1</p>
-                  <p>Giá: 400,000₫</p>
-                </div>
-              </div>
-              <!-- Thêm các sản phẩm khác tại đây -->
-            </div>
-          </div>
-
-          <div class="order-total">
-            <h2>Tổng Cộng</h2>
-            <div class="total-breakdown">
-              <p>Tạm tính: <span>800,000₫</span></p>
-              <p>Phí vận chuyển: <span>50,000₫</span></p>
-              <p class="total-price">Tổng thanh toán: <span>850,000₫</span></p>
-            </div>
-          </div>
-
-          <div class="action-buttons">
-            <a href="/shop" class="btn btn-primary">Tiếp Tục Mua Sắm</a>
-          </div>
         </div>
       </div>
     </form>
   </div>
 </main>
+
+<?php
+unset($_SESSION['orderDetails'], $_SESSION['orderSuccess'], $_SESSION['order'])
+  ?>
+
 
 <!-- Footer -->
 <?php include 'includes/footer.php'; ?>

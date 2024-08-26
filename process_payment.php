@@ -50,7 +50,23 @@ if (isset($_POST['place_order'])) {
         sendEmail($email, $subject, $message);
 
         unset($_SESSION['cart']);
-        header('Location: order_success.php');
+
+        // Truy xuất lại thông tin đơn hàng vừa lưu để hiển thị
+        $stmt = $conn->prepare("SELECT * FROM orders WHERE id = ?");
+        $stmt->execute([$order_id]);
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $stmt = $conn->prepare("SELECT od.*, p.name FROM order_details od JOIN products p ON od.product_id = p.id WHERE order_id = ?");
+        $stmt->execute([$order_id]);
+        $orderDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+        $_SESSION['order'] = $order;
+        $_SESSION['orderDetails'] = $orderDetails;
+        $_SESSION['orderSuccess'] = true;
+
+        header('location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
 ?>
