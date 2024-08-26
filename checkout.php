@@ -151,18 +151,52 @@ include 'includes/header.php'; ?>
 
     <div class="order-details">
         <h2>Chi Tiết Đơn Hàng</h2>
-        <ul>
-            <li>Tên sản phẩm: <span>Hộp Táo 250g</span></li>
-            <li>Số lượng: <span>2</span></li>
-            <li>Tổng giá: <span>800,000₫</span></li>
-        </ul>
+        <div class="product-list">
+            <div class="product-item">
+                <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Táo 250g" class="product-image">
+                <div class="product-info">
+                    <h3>Hộp Táo 250g</h3>
+                    <p>Số lượng: 2</p>
+                    <p>Giá: 400,000₫</p>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Cam 330g" class="product-image">
+                <div class="product-info">
+                    <h3>Hộp Cam 330g</h3>
+                    <p>Số lượng: 1</p>
+                    <p>Giá: 400,000₫</p>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Cam 330g" class="product-image">
+                <div class="product-info">
+                    <h3>Hộp Cam 330g</h3>
+                    <p>Số lượng: 1</p>
+                    <p>Giá: 400,000₫</p>
+                </div>
+            </div>
+            <!-- Thêm các sản phẩm khác tại đây -->
+        </div>
+    </div>
+
+    <div class="order-total">
+        <h2>Tổng Cộng</h2>
+        <div class="total-breakdown">
+            <p>Tạm tính: <span>800,000₫</span></p>
+            <p>Phí vận chuyển: <span>50,000₫</span></p>
+            <p class="total-price">Tổng thanh toán: <span>850,000₫</span></p>
+        </div>
     </div>
 
     <div class="action-buttons">
         <a href="/shop" class="btn btn-primary">Tiếp Tục Mua Sắm</a>
-        <a href="/orders" class="btn btn-secondary">Xem Đơn Hàng</a>
     </div>
 </div>
+
+
 
       </div>
     </form>
