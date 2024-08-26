@@ -69,7 +69,7 @@
                             <div class="header__navbar-box">
                                 <i class="header__navbar-cart fa-solid fa-bag-shopping"></i>
                                 <?php if (isset($_SESSION['cart'])) {
-                                    echo "<span class='header__navbar-notice'>" . count($_SESSION['cart']) . "</span>";
+                                    echo "<span class='header__navbar-notice'>" . array_sum($_SESSION['cart']) . "</span>";
                                 }
                                 ?>
 
