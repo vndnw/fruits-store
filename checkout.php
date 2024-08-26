@@ -63,6 +63,7 @@ include 'includes/header.php'; ?>
               $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
               $totalPrice = 0.0;
 
+
               foreach ($products as $item):
                 $totalPrice += $item['current_price'] * $cart[$item['id']]; ?>
 
@@ -88,11 +89,12 @@ include 'includes/header.php'; ?>
                   </div>
                 </div>
               <?php endforeach;
+              $shippingFee = $totalPrice > 500000 ? 0 : 30000;
             }
             ?>
 
           </div>
-          <?php if (!isset($_SESSION['cart'])) {
+          <?php if (empty($_SESSION['cart'])) {
             echo "<h2 class='checkout__cart-empty'>Giỏ hàng trống</h2>";
           } else { ?>
             <div class="checkout__cart-voucher">
@@ -125,7 +127,7 @@ include 'includes/header.php'; ?>
                 <span class="checkout__cart-fee-title">Phí vận chuyển</span>
                 <span class="checkout__cart-fee-price">
                   <img src="./assets/img/checkout/shipper.png" alt="" />
-                  30.000đ</span>
+                  <?php echo number_format($shippingFee) ?>đ</span>
               </div>
               <div class="checkout__cart-fee-item">
                 <span class="checkout__cart-fee-title">Tổng cộng</span>
@@ -143,12 +145,13 @@ include 'includes/header.php'; ?>
         </div>
 
         <div class="checkout__cart-success grid__column-5">
-    <div class="success-message">
-        <i class="success-icon"></i>
-        <h1>Đặt Hàng Thành Công!</h1>
-        <p>Cảm ơn bạn đã mua hàng. Mã đơn hàng của bạn là <strong>#123456</strong>.</p>
-    </div>
+          <div class="success-message">
+            <i class="success-icon"></i>
+            <h1>Đặt Hàng Thành Công!</h1>
+            <p>Cảm ơn bạn đã mua hàng. Mã đơn hàng của bạn là <strong>#123456</strong>.</p>
+          </div>
 
+<<<<<<< HEAD
     <div class="order-details">
         <h2>Chi Tiết Đơn Hàng</h2>
         <div class="product-list">
@@ -195,6 +198,22 @@ include 'includes/header.php'; ?>
         <a href="/shop" class="btn btn-primary">Tiếp Tục Mua Sắm</a>
     </div>
 </div>
+=======
+          <div class="order-details">
+            <h2>Chi Tiết Đơn Hàng</h2>
+            <ul>
+              <li>Tên sản phẩm: <span>Hộp Táo 250g</span></li>
+              <li>Số lượng: <span>2</span></li>
+              <li>Tổng giá: <span>800,000₫</span></li>
+            </ul>
+          </div>
+
+          <div class="action-buttons">
+            <a href="/shop" class="btn btn-primary">Tiếp Tục Mua Sắm</a>
+            <a href="/orders" class="btn btn-secondary">Xem Đơn Hàng</a>
+          </div>
+        </div>
+>>>>>>> 6d6ef6e69ed0bd7dbaef7426d2454be7156b4a03
 
 
 

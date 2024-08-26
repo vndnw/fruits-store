@@ -105,14 +105,14 @@ if (isset($_GET['id'])) {
                                     <div><?php echo number_format($product['sale_off']); ?>%</div>
                                 </div>
 
-                                <div class="pay-product__type-product">
+                                <!-- <div class="pay-product__type-product">
                                     <p>Loại: </p>
                                     <input type="radio" id="type250g" name="product-type" class="pay-product__type-product-active">
                                     <label for="type250g" class="pay-product__type-product-label">Hộp 250g</label>
 
                                     <input type="radio" id="type330g" name="product-type">
                                     <label for="type330g" class="pay-product__type-product-label">Hộp 330g</label>
-                                </div>
+                                </div> -->
 
 
                                 <div class="pay-product__quantity-product">

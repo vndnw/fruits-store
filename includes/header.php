@@ -58,10 +58,14 @@
 
                     <div class="header__navbar-list">
                         <ul class="header__navbar-list">
-                            <div class="header__navbar-item">
-                                <input class="header__navbar-search" type="text" placeholder="Tìm kiếm...">
-                                <i class="header__navbar-search-icon fa-solid fa-magnifying-glass"></i>
-                            </div>
+                            <form class="header__navbar-item" action="search.php" method="GET">
+                                <input required name="query" class="header__navbar-search" type="text"
+                                    placeholder="Tìm kiếm...">
+                                <button class="header__navbar-search-icon" type="submit"><i
+                                        class=" fa-solid fa-magnifying-glass"></i>
+                                </button>
+
+                            </form>
                         </ul>
 
                         <!-- Cart -->
@@ -79,7 +83,7 @@
                                     <img src="./assets/img/header/no_cart.png" class="header__cart-no-cart-img">
                                     <h4 class='header__cart-heading'>
                                         <?php
-                                        echo (isset($_SESSION['cart']) ? "Sản phẩm đã thêm" : "Giỏ hàng trống");
+                                        echo (!empty($_SESSION['cart']) ? "Sản phẩm đã thêm" : "Giỏ hàng trống");
                                         ?>
                                     </h4>
 
@@ -132,14 +136,16 @@
                                         ?>
 
                                     </ul>
-                                    <a href="checkout.php">
-
-                                        <button class="header__cart-checkout">Thanh toán</button>
-                                    </a>
+                                    <?php
+                                    if (!empty($_SESSION['cart']))
+                                        echo "<a href='checkout.php'>
+                                                    <button class='header__cart-checkout'>Thanh toán</button>
+                                                </a>"
+                                            ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </nav>
-            </div>
-        </header>
+                    </nav>
+                </div>
+            </header>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 12, 2024 lúc 06:51 PM
+-- Thời gian đã tạo: Th8 26, 2024 lúc 08:23 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `okchua`
+-- Cơ sở dữ liệu: `fruits_shop`
 --
 
 -- --------------------------------------------------------
@@ -92,7 +92,11 @@ INSERT INTO `orders` (`id`, `customer_name`, `customer_phone`, `customer_address
 (6, 'dsfas', '0123456789', '70 Tô Ký, Phường Tân Chánh Hiệp, Quận 12, Tp.HCM', '2024-08-12 15:08:47', 'pending', 225000.00, '2251120143@ut.edu.vn', ''),
 (7, 'Duy Vo', '0399517567', '409/40/94/2', '2024-08-12 15:31:38', 'pending', 70000.00, '2251120143@ut.edu.vn', '4324234'),
 (8, 'Duy Vo', '54353453245', 'gsdgfs', '2024-08-12 16:53:04', 'pending', 70000.00, '2251120143@ut.edu.vn', ''),
-(9, 'Duy Vo', '54353453245', 'gsdgfs', '2024-08-12 21:29:06', 'pending', 275000.00, '2251120143@ut.edu.vn', 'fsdafdsfasdasdsdf');
+(9, 'Duy Vo', '54353453245', 'gsdgfs', '2024-08-12 21:29:06', 'pending', 275000.00, '2251120143@ut.edu.vn', 'fsdafdsfasdasdsdf'),
+(10, '', '', '', '2024-08-25 16:48:25', 'pending', 150000.00, '', ''),
+(11, '', '', '', '2024-08-25 16:56:19', 'pending', 150000.00, '', ''),
+(12, 'fd', 'df', 'df', '2024-08-25 16:59:39', 'pending', 60000.00, 'df@ut.edu.vn', ''),
+(13, 'test', 'df', 'df', '2024-08-25 19:52:56', 'pending', 385000.00, 'df@ut.edu.vn', 'ok');
 
 -- --------------------------------------------------------
 
@@ -124,7 +128,17 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `price`
 (9, 7, 9, 1, 40000.00),
 (10, 8, 3, 1, 40000.00),
 (11, 9, 2, 1, 45000.00),
-(12, 9, 9, 5, 40000.00);
+(12, 9, 9, 5, 40000.00),
+(13, 11, 5, 1, 15000.00),
+(14, 11, 8, 3, 35000.00),
+(15, 12, 5, 2, 15000.00),
+(16, 13, 8, 1, 35000.00),
+(17, 13, 9, 1, 40000.00),
+(18, 13, 12, 2, 15000.00),
+(19, 13, 14, 1, 25000.00),
+(20, 13, 15, 1, 35000.00),
+(21, 13, 16, 3, 55000.00),
+(22, 13, 17, 1, 25000.00);
 
 -- --------------------------------------------------------
 
@@ -285,13 +299,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `order_vouchers`

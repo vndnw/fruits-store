@@ -547,6 +547,10 @@
     font-weight: 400;
     color: var(--text-color);
     line-height: 1.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
 }
 
 .home-product-item__price {
