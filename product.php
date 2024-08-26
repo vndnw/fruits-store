@@ -107,9 +107,13 @@ if (isset($_GET['id'])) {
 
                                 <div class="pay-product__type-product">
                                     <p>Loại: </p>
-                                    <button class="pay-product__type-product-active">Hộp 250g</button>
-                                    <button>Hộp 330g</button>
+                                    <input type="radio" id="type250g" name="product-type" class="pay-product__type-product-active">
+                                    <label for="type250g" class="pay-product__type-product-label">Hộp 250g</label>
+
+                                    <input type="radio" id="type330g" name="product-type">
+                                    <label for="type330g" class="pay-product__type-product-label">Hộp 330g</label>
                                 </div>
+
 
                                 <div class="pay-product__quantity-product">
                                     <p>Số lượng: </p>

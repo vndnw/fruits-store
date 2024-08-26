@@ -234,44 +234,40 @@
 
 .pay-product__type-product {
     display: flex;
+    align-items: center;
 }
 
 .pay-product__type-product p {
     font-size: 1.4rem;
-    font-weight: 500;
+    margin-right: 10px;
 }
 
-.pay-product__type-product button {
+.pay-product__type-product input[type="radio"] {
+    display: none;
+}
+
+.pay-product__type-product-label {
+    padding: 7px 12px;
     font-size: 1.2rem;
-    font-weight: 400;
-    width: 80px;
-    height: 25px;
-    border: 1px solid var(--primary-color);
-    border-radius: 2px;
-    padding-top: 2px;
-    margin: 10px 0 0 10px;
-    text-transform: uppercase;
-}
-
-.pay-product__type-product button:hover {
-    border: 1px solid black;
+    border: 2px solid #ccc;
+    border-radius: 5px;
     background-color: var(--white-color);
+    color: #333;
     cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.pay-product__type-product-active {
-    font-size: 1.2rem;
-    font-weight: 400;
-    width: 80px;
-    height: 25px;
-    border: 1px solid black !important;
-    border-radius: 2px;
-    padding-top: 2px;
-    margin: 10px 0 0 10px;
-    text-transform: uppercase;
+.pay-product__type-product input[type="radio"]:checked + .pay-product__type-product-label {
     background-color: var(--primary-color);
-    cursor: pointer;
+    border-color: var(--primary-color);
+    color: #fff;
 }
+
+.pay-product__type-product-label:hover {
+    background-color: #ebebeb;
+}
+
 
 .pay-product__quantity-product {
     margin-top: 0px;
