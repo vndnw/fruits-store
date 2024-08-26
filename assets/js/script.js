@@ -1,10 +1,8 @@
 let slideIndex = 1;
 showSlides(slideIndex);
 
-// Tự động chuyển slide mỗi 2 giây
-setInterval(function () {
-  plusSlides(1); // Tăng chỉ số slide hiện tại lên 1
-}, 5000); // 2000 ms = 2 giây
+// Automatically change slide every 5 seconds
+setInterval(() => plusSlides(1), 5000);
 
 function plusSlides(n) {
   showSlides((slideIndex += n));
@@ -15,9 +13,8 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("dot");
 
   if (n > slides.length) {
     slideIndex = 1;
@@ -27,14 +24,19 @@ function showSlides(n) {
     slideIndex = slides.length;
   }
 
-  for (i = 0; i < slides.length; i++) {
+  for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
 
-  for (i = 0; i < dots.length; i++) {
+  for (let i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
 
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
+  if (slides[slideIndex - 1]) {
+    slides[slideIndex - 1].style.display = "block";
+  }
+
+  if (dots[slideIndex - 1]) {
+    dots[slideIndex - 1].className += " active";
+  }
 }
