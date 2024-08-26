@@ -92,7 +92,7 @@ include 'includes/header.php'; ?>
             ?>
 
           </div>
-          <?php if (!isset($_SESSION['cart'])) {
+          <?php if (empty($_SESSION['cart'])) {
             echo "<h2 class='checkout__cart-empty'>Giỏ hàng trống</h2>";
           } else { ?>
             <div class="checkout__cart-voucher">
