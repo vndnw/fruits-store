@@ -141,6 +141,29 @@ include 'includes/header.php'; ?>
 
 
         </div>
+
+        <div class="checkout__cart-success grid__column-5">
+    <div class="success-message">
+        <i class="success-icon"></i>
+        <h1>Đặt Hàng Thành Công!</h1>
+        <p>Cảm ơn bạn đã mua hàng. Mã đơn hàng của bạn là <strong>#123456</strong>.</p>
+    </div>
+
+    <div class="order-details">
+        <h2>Chi Tiết Đơn Hàng</h2>
+        <ul>
+            <li>Tên sản phẩm: <span>Hộp Táo 250g</span></li>
+            <li>Số lượng: <span>2</span></li>
+            <li>Tổng giá: <span>800,000₫</span></li>
+        </ul>
+    </div>
+
+    <div class="action-buttons">
+        <a href="/shop" class="btn btn-primary">Tiếp Tục Mua Sắm</a>
+        <a href="/orders" class="btn btn-secondary">Xem Đơn Hàng</a>
+    </div>
+</div>
+
       </div>
     </form>
   </div>
