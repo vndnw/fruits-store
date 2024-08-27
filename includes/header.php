@@ -29,27 +29,31 @@
         <header class="header">
             <div class="grid">
                 <nav class="header__navbar header__navbar-list">
-                    <a class="header__navbar-list header__navbar-logo" href="">
+                    <?php
+                    $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+                    ?>
+                    <a class="header__navbar-list header__navbar-logo" href="<?php echo $base_url; ?>">
                         <img style="height: 70px; width: 70px;" src="./assets/img/header/logo.png" alt="logo">
                     </a>
 
                     <ul class="header__navbar-list header__navbar-list-info">
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item-link" href="">TRANG CHỦ</a>
+                            <a class="header__navbar-item-link" href="<?php echo $base_url; ?>">TRANG CHỦ</a>
                         </li>
                         <li class="header__navbar-item header__navbar-item--separate">
-                            <a class="header__navbar-item-link" href="#product">SẢN PHẨM</a>
+                            <a class="header__navbar-item-link" href="<?php echo $base_url; ?>/products.php">SẢN
+                                PHẨM</a>
                         </li>
                         <li class="header__navbar-item">
                             <a class="header__navbar-item" href="">
                                 <span class="header__navbar-item--no-pointer">KẾT NỐI</span>
-                                <a href="" class="header__navbar-icon-link">
+                                <a href="#" class="header__navbar-icon-link">
                                     <i class="header__navbar-icon fa-brands fa-tiktok "></i>
                                 </a>
-                                <a href="" class="header__navbar-icon-link">
+                                <a href="#" class="header__navbar-icon-link">
                                     <i class="header__navbar-icon fa-brands fa-facebook"></i>
                                 </a>
-                                <a href="" class="header__navbar-icon-link">
+                                <a href="#" class="header__navbar-icon-link">
                                     <i class="header__navbar-icon fa-brands fa-youtube"></i>
                                 </a>
                             </a>
