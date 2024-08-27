@@ -129,7 +129,9 @@
                                                             <span class="header__cart-item-description">
                                                                 <!-- Loại: Hộp 250g -->
                                                             </span>
-                                                            <a href="cart.php?action=remove&id=<?php echo $item['id'] ?>" class="
+                                                            <a onclick="return confirmDelete()"
+                                                                href="cart.php?action=remove&id=<?php echo $item['id'] ?>"
+                                                                class="
                                                                 header__cart-item-remove">Xoá</a>
                                                         </div>
                                                     </div>

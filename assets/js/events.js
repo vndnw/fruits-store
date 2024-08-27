@@ -6,6 +6,13 @@ function changeQuantity(amount) {
     quantityInput.value = newQuantity;
   }
 }
+function confirmDelete() {
+  return confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
+}
+function addToCart() {
+  return alert("Sản phẩm đã được thêm vào giỏ hàng!");
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".plus, .minus").forEach((button) => {
     button.addEventListener("click", () => {
