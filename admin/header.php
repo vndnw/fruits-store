@@ -32,6 +32,7 @@ requireLogin();
 
     .header-navbar__menu {
         display: flex;
+        align-items: center;
     }
 
     .header-navbar__menu-item {
@@ -120,6 +121,18 @@ requireLogin();
     .button-cancel:hover {
         background-color: #c62828;
     }
+
+    .header-navbar__menu-item--logout {
+        color: #ffffff;
+        background-color: #f44336;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .header-navbar__menu-item--logout:hover {
+        background-color: #d32f2f;
+    }
 </style>
 
 <header class="header-navbar">
@@ -129,5 +142,6 @@ requireLogin();
         <a class="header-navbar__menu-item" href="products.php">Products</a>
         <a class="header-navbar__menu-item" href="vouchers.php">Vouchers</a>
         <a class="header-navbar__menu-item" href="orders.php">Orders</a>
+        <a class="header-navbar__menu-item header-navbar__menu-item--logout" href="logout.php">Logout</a>
     </div>
 </header>
