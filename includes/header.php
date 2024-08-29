@@ -45,15 +45,15 @@
                                 PHẨM</a>
                         </li>
                         <li class="header__navbar-item">
-                            <a class="header__navbar-item" href="">
+                            <a class="header__navbar-item" target="_blank" href="tel:0123456789">
                                 <span class="header__navbar-item--no-pointer">KẾT NỐI</span>
-                                <a href="#" class="header__navbar-icon-link">
+                                <a href="https://tiktok.com" target="_blank" class="header__navbar-icon-link">
                                     <i class="header__navbar-icon fa-brands fa-tiktok "></i>
                                 </a>
-                                <a href="#" class="header__navbar-icon-link">
+                                <a href="https://facebook.com" target="_blank" class="header__navbar-icon-link">
                                     <i class="header__navbar-icon fa-brands fa-facebook"></i>
                                 </a>
-                                <a href="#" class="header__navbar-icon-link">
+                                <a href="https://youtube.com" target="_blank" class="header__navbar-icon-link">
                                     <i class="header__navbar-icon fa-brands fa-youtube"></i>
                                 </a>
                             </a>

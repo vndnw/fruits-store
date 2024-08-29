@@ -35,6 +35,7 @@
 </div>
 
 <!-- Sản phẩm nổi bật -->
+
 <body>
     <div class="featured-products">
         <div class="products-navigation">
@@ -45,35 +46,50 @@
             </div>
         </div>
         <div class="products-container">
-            <div class="product">
-                <a href="" class="product-link">
-                <div class="product-image">
-                    <img src="./uploads/products/le-ki-ma.jpg" alt="Táo">
-                </div>
-                <div class="product-name">
-                    <p>Tên sản phẩm: Táo</p>
-                </div>
-                <div class="product-prices">
-                    <p>Giá cũ: <span class="old-price">100,000đ</span></p>
-                    <p>Giá mới: <span class="new-price">80,000đ</span></p>
-                </div>
-                <div class="product-prices__sale-off">
-                    <span class="product-prices__sale-off-percent">
-                        <p>-20%</p>
-                    </span>
-                </div>
-                </a>
-                
-                <div class="add-to-cart">
-                    <a href="" class="add-to-cart__content">Thêm vào giỏ</a>
-                    <span>
-                        <a href=""><i class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i></a>
-                    </span>
-                </div>
-            </div>
+            <?php
+            // Fetch featured products from the database
+            $stmt = $conn->prepare("SELECT id, name, image, old_price, current_price, 100 * (old_price - current_price) / old_price AS sale_off 
+                                FROM products 
+                                WHERE is_featured = 1");
+            $stmt->execute();
+            $featuredProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            
-            <!-- Thêm các sản phẩm khác ở đây -->
+            foreach ($featuredProducts as $product) {
+                ?>
+                <div class="product">
+                    <a href="./product.php?id=<?php echo $product['id']; ?>" class="product-link">
+                        <div class="product-image">
+                            <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
+                        </div>
+                        <div class="product-name">
+                            <p><?php echo $product['name']; ?></p>
+                        </div>
+                        <div class="product-prices">
+                            <p>Giá cũ: <span
+                                    class="old-price"><?php echo number_format($product['old_price'], 0, ',', '.'); ?>đ</span>
+                            </p>
+                            <p>Giá mới: <span
+                                    class="new-price"><?php echo number_format($product['current_price'], 0, ',', '.'); ?>đ</span>
+                            </p>
+                        </div>
+                        <div class="product-prices__sale-off">
+                            <span class="product-prices__sale-off-percent">
+                                <p>-<?php echo round($product['sale_off']); ?>%</p>
+                            </span>
+                        </div>
+                    </a>
+                    <div class="add-to-cart">
+                        <a onclick="return addToCart()" href="cart.php?id=<?php echo $product['id'] ?>"
+                            class="add-to-cart__content">Thêm vào giỏ</a>
+                        <span>
+                            <a onclick="return addToCart()" href="cart.php?id=<?php echo $product['id'] ?>"><i
+                                    class="home-product-item__add-cart-icon fa-solid fa-basket-shopping"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 
@@ -84,7 +100,7 @@
 
 
 
-    <!-- Container -->
+<!-- Container -->
 <article id="product" class="container">
     <div class="grid">
         <div class="grid__row">
@@ -203,17 +219,17 @@
 </body>
 
 <script>
-        const container = document.querySelector('.products-container');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
+    const container = document.querySelector('.products-container');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
 
-        nextBtn.addEventListener('click', () => {
-            container.scrollBy({ left: 240, behavior: 'smooth' });
-        });
+    nextBtn.addEventListener('click', () => {
+        container.scrollBy({ left: 240, behavior: 'smooth' });
+    });
 
-        prevBtn.addEventListener('click', () => {
-            container.scrollBy({ left: -240, behavior: 'smooth' });
-        });
-    </script>
+    prevBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -240, behavior: 'smooth' });
+    });
+</script>
 
 <?php include 'includes/footer.php'; ?>
