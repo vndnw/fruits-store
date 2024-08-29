@@ -159,6 +159,16 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
         .button-cancel:hover {
             background-color: #c62828;
         }
+
+        .product-options label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .product-options input[type="radio"] {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 
@@ -173,21 +183,22 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo $result;
-
-
+        // var_dump($result);
+        
         ?>
         <article class="article">
             <h1>Edit Product</h1>
             <form action="/edit-product" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="product-name">Tên sản phẩm</label>
-                    <input type="text" id="product-name" name="product_name" value="Existing Product Name" required>
+                    <input type="text" id="product-name" name="product_name" value="<?php echo $result['name'] ?>"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Mô tả</label>
-                    <textarea id="description" name="description" required>Existing product description</textarea>
+                    <textarea id="description" name="description"
+                        required><?php echo $result['description'] ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -195,31 +206,46 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
                     <input type="file" id="image" name="image" accept="image/*">
                     <div class="image-preview" id="image-preview">
                         <?php if (!empty($result['image'])): ?>
-                            <img src="/path/to/images/<?php echo htmlspecialchars($result['image']); ?>"
-                                alt="Current Image">
+                            <img src="../<?php echo htmlspecialchars($result['image']); ?>" alt="Current Image">
                         <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="old-price">Giá cũ</label>
-                    <input type="number" id="old-price" name="old_price" value="Existing old price" required>
+                    <input type="number" id="old-price" name="old_price" value="<?php echo $result['old_price'] ?>"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="new-price">Giá mới</label>
-                    <input type="number" id="new-price" name="new_price" value="Existing new price" required>
+                    <input type="number" id="new-price" name="new_price" value="<?php echo $result['current_price'] ?>"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="status">Trạng thái</label>
                     <select id="status" name="status" required>
-                        <option value="in_stock" <?php echo $result['status'] == 'in_stock' ? 'selected' : ''; ?>>Còn hàng
+                        <option value="in_stock" <?php echo 'selected'; ?>>Còn hàng
                         </option>
-                        <option value="out_of_stock" <?php echo $result['status'] == 'out_of_stock' ? 'selected' : ''; ?>>
+                        <option value="out_of_stock">
                             Hết hàng</option>
                     </select>
                 </div>
+                <div class="">
+                    <div class="product-options">
+                        <label for="new_product_yes">Hàng mới:
+                            <input type="radio" id="new_product_yes" name="new_product" value="1" <?php echo $result['is_new'] == 1 ? 'checked' : ''; ?>> Có
+                            <input type="radio" id="new_product_no" name="new_product" value="0" <?php echo $result['is_new'] == 0 ? 'checked' : ''; ?>> Không
+                        </label>
+                        <br>
+                        <label for="featured_product_yes">Hàng nổi bật:
+                            <input type="radio" id="featured_product_yes" name="featured_product" value="1" <?php echo $result['is_featured'] == 1 ? 'checked' : ''; ?>> Có
+                            <input type="radio" id="featured_product_no" name="featured_product" value="0" <?php echo $result['is_featured'] == 0 ? 'checked' : ''; ?>> Không
+                        </label>
+                    </div>
+                </div>
+
 
                 <div class="form-buttons">
                     <button type="submit" class="button-save">Lưu</button>
