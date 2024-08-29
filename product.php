@@ -138,7 +138,8 @@ if (isset($_GET['id'])) {
                                 </div>
 
                                 <div class="pay-product__add-and-pay">
-                                    <button type="submit" name="action" value="add-cart" class="add-and-pay__add-cart">
+                                    <button onclick="addToCart()" type="submit" name="action" value="add-cart"
+                                        class="add-and-pay__add-cart">
                                         Thêm vào giỏ</button>
                                     <button type="submit" name="action" value="buy-now" class="add-and-pay__pay-now">
                                         Mua Ngay</button>

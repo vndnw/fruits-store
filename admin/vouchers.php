@@ -1,5 +1,7 @@
 <?php
+require_once '../config/session.php';
 require_once '../config/connect.php';
+requireLogin();
 
 ?>
 <!DOCTYPE html>

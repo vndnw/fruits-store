@@ -80,7 +80,8 @@ include 'includes/header.php'; ?>
                     <h3 class="checkout__cart-item-title"><?php echo $item['name']; ?></h3>
                     <div class="checkout__cart-item-price"><?php echo number_format($item['current_price']); ?>đ</div>
                     <div class="checkout__cart-item-actions">
-                      <a href="cart.php?action=remove&id=<?php echo $item['id'] ?>" class="checkout__cart-item-delete">
+                      <a onclick="return confirmDelete()" href="cart.php?action=remove&id=<?php echo $item['id'] ?>"
+                        class="checkout__cart-item-delete">
                         <i class="fa-solid fa-trash-can"></i>
                       </a>
                       <div class="checkout__cart-item-action">
@@ -161,7 +162,7 @@ include 'includes/header.php'; ?>
                   $total_amount += $detail['price'] * $detail['quantity']; ?>
 
                     <div class="product-item">
-                      <img src="./uploads/products/cam-sanh.jpg" alt="Hộp Táo 250g" class="product-image">
+                      <img src="<?php echo $detail['image']; ?>" alt="Hộp Táo 250g" class="product-image">
                       <div class="product-info">
                         <h3><?php echo htmlspecialchars($detail['name']); ?></h3>
                         <p>Số lượng: <?php echo $detail['quantity']; ?></p>
@@ -188,8 +189,13 @@ include 'includes/header.php'; ?>
                 </div>
               </div>
 
+              <?php
+              $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+              ?>
+
               <div class="action-buttons">
-                <a href="/shop" class="btn btn-primary">Tiếp Tục Mua Sắm</a>
+                <a href="<?php echo $base_url; ?>" class="btn btn-primary">Tiếp Tục Mua
+                  Sắm</a>
               </div>
 
             <?php

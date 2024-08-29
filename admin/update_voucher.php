@@ -1,3 +1,11 @@
+<?php
+require_once '../config/session.php';
+require_once '../config/connect.php';
+requireLogin();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -155,7 +163,8 @@
 
                 <div class="form-group">
                     <label for="discount">Phần trăm giảm giá</label>
-                    <input type="number" id="discount" name="discount" min="0" max="100" value="DISCOUNT_PERCENTAGE" required>
+                    <input type="number" id="discount" name="discount" min="0" max="100" value="DISCOUNT_PERCENTAGE"
+                        required>
                 </div>
 
                 <div class="form-group">

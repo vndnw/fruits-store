@@ -56,7 +56,7 @@ if (isset($_POST['place_order'])) {
         $stmt->execute([$order_id]);
         $order = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $stmt = $conn->prepare("SELECT od.*, p.name FROM order_details od JOIN products p ON od.product_id = p.id WHERE order_id = ?");
+        $stmt = $conn->prepare("SELECT od.*, p.name,  p.image FROM order_details od JOIN products p ON od.product_id = p.id WHERE order_id = ?");
         $stmt->execute([$order_id]);
         $orderDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

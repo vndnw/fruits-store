@@ -153,7 +153,7 @@
                                         <span class="home-product-item__sale-off-label">GIẢM</span>
                                     </div>
                                     <!-- thẻ a của thêm vào giỏ hàng -->
-                                    <a href="cart.php?id=<?php echo $product['id'] ?>">
+                                    <a onclick="return addToCart()" href="cart.php?id=<?php echo $product['id'] ?>">
                                         <div class="home-product-item__add">
                                             <h3 class="home-product-item__add-cart-label">Thêm vào giỏ</h3>
                                             <span>

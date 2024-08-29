@@ -1,3 +1,9 @@
+<?php
+require_once '../config/session.php';
+require_once '../config/connect.php';
+requireLogin();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -136,7 +142,7 @@
 <body>
     <div class="wrapper">
 
-<?php include "./header.php" ?>
+        <?php include "./header.php" ?>
         <article class="article">
             <h1>Add New Order</h1>
             <form action="/submit-order" method="post">
