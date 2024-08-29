@@ -49,7 +49,7 @@
 
                         <!-- Product item -->
                         <?php
-                        $limit = 12;
+                        $limit = 24;
                         $stmt = $conn->prepare("SELECT COUNT(*) as total FROM products");
                         $stmt->execute();
                         $row = $stmt->fetch(PDO::FETCH_ASSOC);
