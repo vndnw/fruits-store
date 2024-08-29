@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 27, 2024 lúc 05:27 AM
+-- Thời gian đã tạo: Th8 29, 2024 lúc 05:58 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`, `email`, `phone`) VALUES
-(1, 'admin', '0192023a7bbd73250516f069df18b500', 'admin@example.com', '0123456789');
+(1, 'admin', '$2y$10$gDQ.cCbpF3S5pkcnTphNJ.79rataIFSEeOxFqiBXFhR0X3cMkYh2.', 'admin@example.com', '0123456789'),
+(2, 'duy', '$2y$10$F2.7i2tA0iCg2Qzbptpuzudq85vj6OGUf2OsfQwuCreOdGSvyMoaa', '2251120143@ut.edu.vn', '039999999');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,12 @@ INSERT INTO `orders` (`id`, `customer_name`, `customer_phone`, `customer_address
 (41, 'Tien', '225112018', '225112018', '2024-08-27 10:10:41', 'pending', 55000.00, '2251120188@ut.edu.vn', ''),
 (42, 'Tien', '225112018', '225112018', '2024-08-27 10:11:07', 'pending', 55000.00, '2251120188@ut.edu.vn', ''),
 (43, 'Tien', '225112018', '225112018', '2024-08-27 10:11:40', 'pending', 40000.00, '2251120188@ut.edu.vn', ''),
-(44, 'Tien', '225112018', '225112018', '2024-08-27 10:14:43', 'pending', 50000.00, '2251120188@ut.edu.vn', '');
+(44, 'Tien', '225112018', '225112018', '2024-08-27 10:14:43', 'pending', 50000.00, '2251120188@ut.edu.vn', ''),
+(45, 'Duy Vo Ngoc', '225112018', '225112018', '2024-08-27 16:41:24', 'pending', 315000.00, '2251120143@ut.edu.vn', ''),
+(46, 'Tien', '0326092480', '225112018', '2024-08-27 16:49:28', 'pending', 85000.00, '2251120143@ut.edu.vn', ''),
+(47, 'Tien', '0326092480', '225112018', '2024-08-27 17:09:09', 'pending', 510000.00, '', ''),
+(48, 'Duy Vo Ngoc', '225112018', '225112018', '2024-08-27 17:10:55', 'pending', 55000.00, '', ''),
+(49, 'Duy Vo', '0399517567', '409/40/94/2', '2024-08-28 15:38:23', 'pending', 500000.00, '2251120143@ut.edu.vn', '');
 
 -- --------------------------------------------------------
 
@@ -210,7 +216,22 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `price`
 (60, 41, 1, 1, 25000.00),
 (61, 42, 10, 1, 25000.00),
 (62, 43, 7, 1, 10000.00),
-(63, 44, 11, 1, 20000.00);
+(63, 44, 11, 1, 20000.00),
+(64, 45, 1, 2, 25000.00),
+(65, 45, 4, 2, 55000.00),
+(66, 45, 5, 1, 15000.00),
+(67, 45, 8, 2, 35000.00),
+(68, 45, 9, 1, 40000.00),
+(69, 46, 7, 1, 10000.00),
+(70, 46, 39, 1, 45000.00),
+(71, 47, 1, 1, 25000.00),
+(72, 47, 5, 9, 15000.00),
+(73, 47, 6, 2, 30000.00),
+(74, 47, 9, 6, 40000.00),
+(75, 47, 10, 2, 25000.00),
+(76, 48, 1, 1, 25000.00),
+(77, 49, 7, 30, 10000.00),
+(78, 49, 9, 5, 40000.00);
 
 -- --------------------------------------------------------
 
@@ -273,7 +294,27 @@ INSERT INTO `products` (`id`, `name`, `description`, `category_id`, `image`, `ol
 (17, 'Quýt đường 1kg', 'Quýt đường là loại trái cây đặc sản của miền Tây Nam Bộ, nổi bật với vị ngọt thanh và hương thơm dễ chịu. Quýt đường có lớp vỏ màu vàng sáng, thịt quả mọng nước và hương vị tươi mát, mang lại cảm giác giải khát tuyệt vời. Đây là loại trái cây giàu vitamin C và chất xơ, tốt cho sức khỏe và hệ tiêu hóa. Quýt đường thường được dùng để ăn trực tiếp, làm nước ép, hoặc chế biến thành các món tráng miệng, là lựa chọn hoàn hảo cho những ngày hè nóng bức.', 1, 'uploads/products/quyt-duong.jpg', 30000.00, 25000.00, 0, 0),
 (18, 'Lê ki ma 1kg', 'Lê ki ma là một loại trái cây đặc sản của miền Nam Việt Nam, nổi bật với vị ngọt thanh và hương thơm dễ chịu. Lê ki ma có lớp vỏ mỏng màu vàng nhạt, thịt quả giòn và mọng nước. Đây là loại trái cây giàu vitamin C và chất xơ, tốt cho sức khỏe và hệ tiêu hóa. Lê ki ma thường được ăn trực tiếp hoặc chế biến thành các món ăn nhẹ, đem lại sự tươi mát và dinh dưỡng cho cơ thể. Đây là lựa chọn lý tưởng cho những ai yêu thích trái cây giòn ngọt và bổ dưỡng.', 1, 'uploads/products/le-ki-ma.jpg', 35000.00, 30000.00, 0, 0),
 (19, 'Sầu riêng 1kg', 'Sầu riêng là một trong những loại trái cây nổi tiếng và đặc biệt của miền Tây Nam Bộ, nổi bật với mùi thơm mạnh mẽ và vị ngọt béo. Sầu riêng có lớp vỏ dày, màu xanh nâu, và thịt quả vàng óng ánh, mềm mại, có hương vị ngọt lịm và béo ngậy. Đây là loại trái cây chứa nhiều vitamin C, chất xơ, và các khoáng chất cần thiết cho cơ thể. Sầu riêng thường được ăn trực tiếp hoặc chế biến thành các món ăn như kem sầu riêng, chè sầu riêng, mang lại sự phong phú và độc đáo trong ẩm thực.', 1, 'uploads/products/sau-rieng.jpg', 70000.00, 65000.00, 0, 0),
-(20, 'Măng cụt 1kg', 'Măng cụt là loại trái cây đặc sản của miền Tây Nam Bộ, nổi bật với lớp vỏ màu tím đậm và thịt quả trắng ngọt. Măng cụt có hương vị ngọt thanh, mềm mại và hơi chua nhẹ, đem lại cảm giác tươi mát và bổ dưỡng. Đây là loại trái cây chứa nhiều vitamin C và chất chống oxy hóa, tốt cho sức khỏe và hệ miễn dịch. Măng cụt thường được ăn trực tiếp hoặc chế biến thành các món tráng miệng, mang lại sự tươi mới và hương vị đặc trưng cho ẩm thực Việt Nam.', 1, 'uploads/products/mang-cut.jpg', 50000.00, 45000.00, 0, 0);
+(20, 'Măng cụt 1kg', 'Măng cụt là loại trái cây đặc sản của miền Tây Nam Bộ, nổi bật với lớp vỏ màu tím đậm và thịt quả trắng ngọt. Măng cụt có hương vị ngọt thanh, mềm mại và hơi chua nhẹ, đem lại cảm giác tươi mát và bổ dưỡng. Đây là loại trái cây chứa nhiều vitamin C và chất chống oxy hóa, tốt cho sức khỏe và hệ miễn dịch. Măng cụt thường được ăn trực tiếp hoặc chế biến thành các món tráng miệng, mang lại sự tươi mới và hương vị đặc trưng cho ẩm thực Việt Nam.', 1, 'uploads/products/mang-cut.jpg', 50000.00, 45000.00, 0, 0),
+(21, 'Xoài keo 1kg', 'Xoài keo là một loại xoài phổ biến ở miền Nam Việt Nam, nổi tiếng với vị ngọt đậm đà và hương thơm đặc trưng. Thịt quả chắc, ít xơ, thích hợp để ăn trực tiếp hoặc làm sinh tố.', 1, 'uploads/products/xoai-keo.jpg', 40000.00, 35000.00, 0, 1),
+(22, 'Ổi Đông Dư 1kg', 'Ổi Đông Dư là một loại trái cây nổi tiếng của vùng đồng bằng Bắc Bộ, có vỏ mỏng, thịt quả giòn và hương vị ngọt thanh. Loại ổi này rất giàu vitamin C, tốt cho sức khỏe.', 1, 'uploads/products/oi-dong-du.jpg', 30000.00, 25000.00, 0, 0),
+(23, 'Dưa gang 1kg', 'Dưa gang là loại trái cây giải nhiệt tuyệt vời, đặc biệt phổ biến trong mùa hè. Với vị ngọt thanh, thịt quả mọng nước, dưa gang thường được ăn trực tiếp hoặc làm sinh tố.', 1, 'uploads/products/dua-gang.jpg', 25000.00, 20000.00, 1, 0),
+(24, 'Nhãn xuồng cơm vàng 1kg', 'Nhãn xuồng cơm vàng là loại nhãn đặc sản của miền Nam, nổi bật với thịt quả vàng óng, ngọt lịm và hương thơm dễ chịu. Đây là loại trái cây giàu dinh dưỡng, chứa nhiều vitamin C.', 1, 'uploads/products/nhan-xuong.jpg', 45000.00, 40000.00, 0, 1),
+(25, 'Mít tố nữ 1kg', 'Mít tố nữ là một loại mít đặc sản với hương vị ngọt ngào, thịt quả dai và mọng nước. Loại mít này không chỉ thơm ngon mà còn giàu dinh dưỡng, đặc biệt là vitamin A và C.', 1, 'uploads/products/mit-to-nu.jpg', 35000.00, 30000.00, 1, 0),
+(26, 'Chanh dây 1kg', 'Chanh dây là loại trái cây nổi tiếng với hương vị chua ngọt đặc trưng. Thích hợp để làm nước ép, sinh tố, hoặc làm nguyên liệu cho các món tráng miệng.', 1, 'uploads/products/chanh-day.jpg', 30000.00, 25000.00, 0, 0),
+(27, 'Lựu đỏ 1kg', 'Lựu đỏ là một loại trái cây có giá trị dinh dưỡng cao, giàu chất chống oxy hóa và vitamin C. Thịt quả giòn, ngọt thanh, là món tráng miệng lý tưởng.', 1, 'uploads/products/luu-do.jpg', 50000.00, 45000.00, 1, 1),
+(28, 'Quả bơ 1kg', 'Bơ là loại trái cây giàu chất béo tốt cho sức khỏe, có thể ăn trực tiếp hoặc chế biến thành nhiều món ăn ngon và bổ dưỡng như salad, sinh tố.', 1, 'uploads/products/bo.jpg', 60000.00, 55000.00, 0, 1),
+(29, 'Dâu tằm 1kg', 'Dâu tằm là loại trái cây có hương vị chua ngọt, rất tốt cho sức khỏe. Dâu tằm thường được dùng để làm nước ép, sinh tố, hoặc làm nguyên liệu trong các món tráng miệng.', 1, 'uploads/products/dau-tam.jpg', 45000.00, 40000.00, 1, 0),
+(30, 'Táo mèo 1kg', 'Táo mèo là loại trái cây đặc sản của vùng núi phía Bắc Việt Nam, nổi tiếng với vị chua ngọt, thích hợp để làm giấm táo hoặc ngâm rượu.', 1, 'uploads/products/tao-meo.jpg', 35000.00, 30000.00, 0, 1),
+(31, 'Bưởi năm roi 1 trái', 'Bưởi năm roi là loại bưởi nổi tiếng với vị ngọt thanh, thịt quả mọng nước và dễ tách múi. Đây là loại trái cây được yêu thích nhờ hương vị tươi mát và bổ dưỡng.', 1, 'uploads/products/buoi-nam-roi.jpg', 70000.00, 65000.00, 0, 1),
+(32, 'Dưa lưới 1 trái', 'Dưa lưới là loại trái cây giải nhiệt với hương vị ngọt mát và mọng nước. Thích hợp để ăn trực tiếp hoặc làm sinh tố, là món tráng miệng lý tưởng trong mùa hè.', 1, 'uploads/products/dua-luoi.jpg', 80000.00, 75000.00, 1, 0),
+(33, 'Lựu trắng 1kg', 'Lựu trắng là trái cây giàu vitamin C và chất chống oxy hóa, với vị ngọt thanh và hương thơm dễ chịu. Thích hợp để ăn trực tiếp hoặc làm nước ép.', 1, 'uploads/products/luu-trang.jpg', 55000.00, 50000.00, 0, 1),
+(34, 'Sầu riêng Monthong 1kg', 'Sầu riêng Monthong là một trong những loại sầu riêng ngon nhất, với vị ngọt béo và thịt quả mềm mại. Đây là lựa chọn tuyệt vời cho những ai yêu thích sầu riêng.', 1, 'uploads/products/sau-rieng-monthong.jpg', 90000.00, 85000.00, 1, 0),
+(35, 'Quýt miền Tây 1kg', 'Quýt miền Tây nổi tiếng với hương vị ngọt thanh và nước nhiều. Đây là loại trái cây rất thích hợp để ăn trực tiếp hoặc làm nước ép.', 1, 'uploads/products/quyt-mien-tay.jpg', 40000.00, 35000.00, 0, 0),
+(36, 'Mãng cầu 1kg', 'Mãng cầu có hương vị ngọt thanh và mềm mại, chứa nhiều vitamin và chất chống oxy hóa. Thích hợp để ăn trực tiếp hoặc làm sinh tố, nước ép.', 1, 'uploads/products/mang-cau.jpg', 60000.00, 55000.00, 1, 1),
+(37, 'Dâu tây Đà Lạt 500g', 'Dâu tây Đà Lạt là loại dâu tây nổi tiếng với hương vị ngọt ngào và thịt quả mọng nước. Đây là món quà thiên nhiên lý tưởng cho những ai yêu thích trái cây tươi ngon.', 1, 'uploads/products/dau-tay-da-lat-500g.jpg', 35000.00, 30000.00, 1, 0),
+(38, 'Nho đen 1kg', 'Nho đen nổi tiếng với vị ngọt thanh và hương thơm đặc trưng. Chứa nhiều vitamin C và chất chống oxy hóa, nho đen là lựa chọn lý tưởng cho sức khỏe.', 1, 'uploads/products/nho-den.jpg', 60000.00, 55000.00, 0, 1),
+(39, 'Hồng xiêm 1kg', 'Hồng xiêm là loại trái cây có vị ngọt thanh và mềm mại. Đây là lựa chọn tuyệt vời để ăn trực tiếp hoặc chế biến thành các món tráng miệng.', 1, 'uploads/products/hong-xiem.jpg', 50000.00, 45000.00, 1, 0),
+(40, 'Mận đỏ 1kg', 'Mận đỏ có vị ngọt thanh và hương thơm dễ chịu. Thích hợp để ăn trực tiếp hoặc làm mứt, nước ép, là món tráng miệng hấp dẫn và bổ dưỡng.', 1, 'uploads/products/man-do.jpg', 45000.00, 40000.00, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -361,7 +402,7 @@ ALTER TABLE `vouchers`
 -- AUTO_INCREMENT cho bảng `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
@@ -373,13 +414,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT cho bảng `order_vouchers`
@@ -391,7 +432,7 @@ ALTER TABLE `order_vouchers`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `vouchers`
