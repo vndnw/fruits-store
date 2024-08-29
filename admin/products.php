@@ -1,5 +1,7 @@
 <?php
 require_once '../config/connect.php';
+require_once '../config/session.php';
+requireLogin();
 
 ?>
 
@@ -17,9 +19,9 @@ require_once '../config/connect.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="./favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <style>
         /* Global Styles */
         body {

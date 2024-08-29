@@ -1,5 +1,9 @@
 <?php
+require_once '../config/session.php';
 require_once '../config/connect.php';
+requireLogin();
+
+
 
 $id = $_GET['id'];
 $stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
@@ -191,7 +195,8 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
                     <input type="file" id="image" name="image" accept="image/*">
                     <div class="image-preview" id="image-preview">
                         <?php if (!empty($result['image'])): ?>
-                            <img src="/path/to/images/<?php echo htmlspecialchars($result['image']); ?>" alt="Current Image">
+                            <img src="/path/to/images/<?php echo htmlspecialchars($result['image']); ?>"
+                                alt="Current Image">
                         <?php endif; ?>
                     </div>
                 </div>
@@ -209,8 +214,10 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="form-group">
                     <label for="status">Trạng thái</label>
                     <select id="status" name="status" required>
-                        <option value="in_stock" <?php echo $result['status'] == 'in_stock' ? 'selected' : ''; ?>>Còn hàng</option>
-                        <option value="out_of_stock" <?php echo $result['status'] == 'out_of_stock' ? 'selected' : ''; ?>>Hết hàng</option>
+                        <option value="in_stock" <?php echo $result['status'] == 'in_stock' ? 'selected' : ''; ?>>Còn hàng
+                        </option>
+                        <option value="out_of_stock" <?php echo $result['status'] == 'out_of_stock' ? 'selected' : ''; ?>>
+                            Hết hàng</option>
                     </select>
                 </div>
 
@@ -227,13 +234,13 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
 
     <script>
-        document.getElementById('image').addEventListener('change', function(event) {
+        document.getElementById('image').addEventListener('change', function (event) {
             const file = event.target.files[0];
             const imagePreview = document.getElementById('image-preview');
 
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const img = document.createElement('img');
                     img.src = e.target.result;
                     imagePreview.innerHTML = ''; // Clear any previous image
