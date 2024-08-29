@@ -377,5 +377,12 @@
 }
 
 .describe-product__content {
-    
+    font-size: 1.4rem;
+}
+
+.describe-product__content h3{
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-align: justify;
+    line-height: 2rem;
 }
