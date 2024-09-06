@@ -10,7 +10,10 @@ if (isset($_POST['place_order'])) {
     $note = $_POST['note'];
     $total_amount = $_POST['total-price'];
 
-    $stmt = $conn->prepare("INSERT INTO orders (customer_name, customer_phone, email, customer_address, note, total_amount) VALUES (:customer_name, :customer_phone, :email, :customer_address, :note, :total_amount)");
+    $id = uniqid();
+
+    $stmt = $conn->prepare("INSERT INTO orders (id, customer_name, customer_phone, email, customer_address, note, total_amount) VALUES (:id, :customer_name, :customer_phone, :email, :customer_address, :note, :total_amount)");
+    $stmt->bindParam(':id', $id);
     $stmt->bindParam(':customer_name', $customer_name);
     $stmt->bindParam(':customer_phone', $customer_phone);
     $stmt->bindParam(':email', $email);
@@ -19,7 +22,7 @@ if (isset($_POST['place_order'])) {
     $stmt->bindParam(':total_amount', $total_amount);
     if ($stmt->execute()) {
         //Lấy ID đơn hàng vừa tạo
-        $order_id = $conn->lastInsertId();
+        $order_id = $id;
 
 
 

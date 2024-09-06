@@ -4,6 +4,14 @@ include 'includes/header.php'; ?>
 <main class="container">
   <div class="grid">
     <form action="process_payment.php" method="post">
+      <style>
+        .error-message {
+          color: red;
+          font-size: 1.5em;
+          margin-top: 0.25em;
+          display: block;
+        }
+      </style>
       <div class="checkout grid__row">
         <div class="checkout__info grid__column-7">
           <div class="checkout__heading">
@@ -14,24 +22,27 @@ include 'includes/header.php'; ?>
               <div class="checkout__form-group">
                 <input required name="name" type="text" id="name" class="checkout__form-input"
                   placeholder="Họ và tên" />
+                <span class="error-message"></span>
               </div>
               <div class="checkout__form-group">
                 <input required name="email" type="email" id="email" class="checkout__form-input" placeholder="Email" />
+                <span class="error-message"></span>
               </div>
               <div class="checkout__form-group">
                 <input required name="phone" type="text" id="phone" class="checkout__form-input"
                   placeholder="Số điện thoại" />
+                <span class="error-message"></span>
               </div>
               <div class="checkout__form-group">
                 <input required name="address" type="text" id="address" class="checkout__form-input"
                   placeholder="Địa chỉ" />
+                <span class="error-message"></span>
               </div>
               <div class="checkout__form-group">
                 <textarea name="note" id="note" class="checkout__form-textarea" placeholder="Ghi chú"
                   rows="5"></textarea>
               </div>
               <h2>Phương thức thanh toán</h2>
-
               <div class="checkout__form-group payment">
                 <div style="opacity: .2;">
                   <input disabled type="radio" name="payment" id="momo" class="checkout__form-radio" value="momo" />
@@ -196,6 +207,9 @@ include 'includes/header.php'; ?>
               <div class="action-buttons">
                 <a href="<?php echo $base_url; ?>" class="btn btn-primary">Tiếp Tục Mua
                   Sắm</a>
+                <a href="<?php echo $base_url; ?>/order_details.php?order_id=<?php echo $_SESSION['order']['id']; ?>"
+                  class="btn btn-primary">Xem Chi
+                  Tiết Đơn Hàng</a>
               </div>
 
             <?php
@@ -214,3 +228,81 @@ unset($_SESSION['orderDetails'], $_SESSION['orderSuccess'], $_SESSION['order'])
 
 <!-- Footer -->
 <?php include 'includes/footer.php'; ?>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form[action="process_payment.php"]');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const addressInput = document.getElementById('address');
+
+    function validateName() {
+      const name = nameInput.value.trim();
+      if (name === '') {
+        nameInput.nextElementSibling.textContent = 'Tên là bắt buộc';
+        return false;
+      } else {
+        nameInput.nextElementSibling.textContent = '';
+        return true;
+      }
+    }
+
+    function validateEmail() {
+      const email = emailInput.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email === '') {
+        emailInput.nextElementSibling.textContent = 'Email là bắt buộc';
+        return false;
+      }
+      if (!emailPattern.test(email)) {
+        emailInput.nextElementSibling.textContent = 'Định dạng email không hợp lệ';
+        return false;
+      } else {
+        emailInput.nextElementSibling.textContent = '';
+        return true;
+      }
+    }
+
+    function validatePhone() {
+      const phone = phoneInput.value.trim();
+      const phonePattern = /^[0-9]{10,15}$/;
+      if (!phonePattern.test(phone)) {
+        phoneInput.nextElementSibling.textContent = 'Số điện thoại không hợp lệ';
+        return false;
+      } else {
+        phoneInput.nextElementSibling.textContent = '';
+        return true;
+      }
+    }
+
+    function validateAddress() {
+      const address = addressInput.value.trim();
+      if (address === '') {
+        addressInput.nextElementSibling.textContent = 'Địa chỉ là bắt buộc';
+        return false;
+      } else {
+        addressInput.nextElementSibling.textContent = '';
+        return true;
+      }
+    }
+
+    nameInput.addEventListener('blur', validateName);
+    emailInput.addEventListener('blur', validateEmail);
+    phoneInput.addEventListener('blur', validatePhone);
+    addressInput.addEventListener('blur', validateAddress);
+
+    form.addEventListener('submit', function (event) {
+      let isValid = true;
+
+      if (!validateName()) isValid = false;
+      if (!validateEmail()) isValid = false;
+      if (!validatePhone()) isValid = false;
+      if (!validateAddress()) isValid = false;
+
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>

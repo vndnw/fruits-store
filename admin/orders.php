@@ -233,13 +233,22 @@ requireLogin();
             transition: background-color 0.3s;
         }
 
-        .button-edit {
+        .button-view {
             background-color: #34a853;
             /* Green */
         }
 
-        .button-edit:hover {
+        .button-view:hover {
             background-color: #2e8b57;
+        }
+
+        .button-edit {
+            background-color: #f0ad4e;
+            /* Green */
+        }
+
+        .button-edit:hover {
+            background-color: #ec971f;
         }
 
         .button-delete {
@@ -309,9 +318,10 @@ requireLogin();
                     $stmt = $conn->prepare("SELECT * FROM orders");
                     $stmt->execute();
                     $orders = $stmt->fetchAll();
-                    foreach ($orders as $index => $order): ?>
+                    $reversedOrders = array_reverse($orders);
+                    foreach ($reversedOrders as $index => $order): ?>
                         <tr>
-                            <td><?php echo $index ?></td>
+                            <td><?php echo $index + 1 ?></td>
                             <td><?php echo $order['customer_name'] ?></td>
                             <td><?php echo $order['customer_phone'] ?></td>
                             <td><?php echo $order['email'] ?></td>
@@ -320,6 +330,8 @@ requireLogin();
                             <td><?php echo $order['status'] ?></td>
                             <td><?php echo number_format($order['total_amount']) ?></td>
                             <td>
+                                <a href="<?php echo 'order_details.php?id=' . $order['id'] ?>"><button
+                                        class="button-view">Chi tiết</button></a>
                                 <a href="<?php echo 'update_order.php?id=' . $order['id'] ?>"><button
                                         class="button-edit">Chỉnh sửa</button></a>
                                 <a href="<?php echo 'update_order.php?id=' . $order['id'] ?>"><button

@@ -3,6 +3,51 @@ require_once '../config/session.php';
 require_once '../config/connect.php';
 requireLogin();
 
+
+try {
+    if (!isset($_GET['id'])) {
+        die('ID đơn hàng không hợp lệ');
+    }
+
+    $order_id = $_GET['id'];
+
+    // Lấy thông tin đơn hàng
+    $stmt = $conn->prepare("SELECT * FROM orders WHERE id = ?");
+    $stmt->execute([$order_id]);
+    $order = $stmt->fetch();
+    if (!$order) {
+        die('Đơn hàng không tồn tại');
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $customer_name = $_POST['customer_name'];
+        $customer_phone = $_POST['customer_phone'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $note = $_POST['note'];
+        $order_date = $_POST['order_date'];
+        $status = $_POST['status'];
+        $total_amount = $_POST['total_amount'];
+
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $current_time = (new DateTime())->format('H:i:s');
+        $order_date = (new DateTime($order_date . ' ' . $current_time))->format('Y-m-d H:i:s');
+
+
+
+        $stmt = $conn->prepare("UPDATE orders SET customer_name = ?, customer_phone = ?, email = ?, customer_address = ?, order_date = ?, status = ?, total_amount = ?, note = ? WHERE id = ?");
+        $stmt->execute([$customer_name, $customer_phone, $email, $address, $order_date, $status, $total_amount, $note, $order_id]);
+
+        header('Location: orders.php');
+        exit;
+
+    }
+
+} catch (Exception $e) {
+    die($e->getMessage());
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -147,55 +192,60 @@ requireLogin();
 
         <article class="article">
             <h1>Edit Order</h1>
-            <form action="/update-order" method="post">
-                <div class="form-group">
-                    <label for="order-id">Mã đơn hàng</label>
-                    <input type="text" id="order-id" name="order_id" value="12345" disabled>
-                </div>
 
+            <form action="" method="POST">
                 <div class="form-group">
-                    <label for="customer-name">Tên khách hàng</label>
-                    <input type="text" id="customer-name" name="customer_name" value="Nguyễn Văn A" required>
+                    <label for="customer_name">Họ và tên</label>
+                    <input type="text" id="customer_name" name="customer_name"
+                        value="<?php echo htmlspecialchars($order['customer_name']); ?>" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="phone-number">Số điện thoại</label>
-                    <input type="tel" id="phone-number" name="phone_number" value="0987654321" required>
+                    <label for="customer_phone">Số điện thoại</label>
+                    <input type="text" id="customer_phone" name="customer_phone"
+                        value="<?php echo htmlspecialchars($order['customer_phone']); ?>" required>
                 </div>
-
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="example@example.com" required>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($order['email']); ?>"
+                        required>
                 </div>
-
                 <div class="form-group">
                     <label for="address">Địa chỉ</label>
-                    <textarea id="address" name="address" required>Tầng 2, 123 Đường ABC, Quận 1</textarea>
+                    <input type="text" id="address" name="address"
+                        value="<?php echo htmlspecialchars($order['customer_address']); ?>" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="order-date">Ngày đặt</label>
-                    <input type="date" id="order-date" name="order_date" value="2024-08-10" required>
+                    <label for="note">Ghi chú</label>
+                    <textarea id="note" name="note" required><?php echo htmlspecialchars($order['note']); ?></textarea>
                 </div>
-
+                <div class="form-group">
+                    <label for="order-date">Ngày đặt hàng</label>
+                    <input type="date" id="order-date" name="order_date"
+                        value="<?php echo date('Y-m-d', strtotime($order['order_date'])); ?>" required>
+                </div>
                 <div class="form-group">
                     <label for="status">Trạng thái</label>
                     <select id="status" name="status" required>
-                        <option value="pending" selected>Chờ xác nhận</option>
-                        <option value="processing">Đang xử lý</option>
-                        <option value="completed">Đã hoàn thành</option>
-                        <option value="cancelled">Đã hủy</option>
+                        <option value="pending" <?php echo $order['status'] == 'pending' ? 'selected' : ''; ?>>Chờ xác
+                            nhận</option>
+                        <option value="processed" <?php echo $order['status'] == 'processed' ? 'selected' : ''; ?>>Đã xử
+                            lý</option>
+                        <option value="shipped" <?php echo $order['status'] == 'shipped' ? 'selected' : ''; ?>>Đang giao
+                            hàng</option>
+                        <option value="delivered" <?php echo $order['status'] == 'delivered' ? 'selected' : ''; ?>>Đã nhận
+                            hàng</option>
+                        <option value="canceled" <?php echo $order['status'] == 'canceled' ? 'selected' : ''; ?>>Đã hủy
+                        </option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="total-amount">Tổng tiền</label>
-                    <input type="number" id="total-amount" name="total_amount" value="1000000" required>
+                    <input type="number" id="total-amount" name="total_amount"
+                        value="<?php echo $order['total_amount']; ?>" required>
                 </div>
-
                 <div class="form-buttons">
                     <button type="submit" class="button-save">Lưu</button>
-                    <a href="/orders"><button type="button" class="button-cancel">Hủy</button></a>
+                    <a href="orders.php"><button type="button" class="button-cancel">Hủy</button></a>
                 </div>
             </form>
         </article>

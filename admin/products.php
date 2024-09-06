@@ -3,6 +3,17 @@ require_once '../config/connect.php';
 require_once '../config/session.php';
 requireLogin();
 
+
+if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $conn->prepare("DELETE FROM products WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    if ($stmt->execute()) {
+        header("Location: products.php");
+    } else {
+        echo "Error deleting product.";
+    }
+}
 ?>
 
 
@@ -207,8 +218,7 @@ requireLogin();
                         <th>Tên sản phẩm</th>
                         <th>Mô tả</th>
                         <th>Hình ảnh</th>
-                        <th>Giá cũ</th>
-                        <th>Giá mới</th>
+                        <th>Giá</th>
                         <th>Thao tác</th>
                     </tr>
                 </thead>
@@ -220,23 +230,23 @@ requireLogin();
                     $products = $stmt->fetchAll();
                     foreach ($products as $index => $product): ?>
                         <tr>
-                            <td><?php echo $index ?></td>
+                            <td><?php echo $index + 1 ?></td>
                             <td><?php echo $product['name'] ?></td>
                             <td><?php echo $product['description'] ?></td>
-                            <td>dau.jpg</td>
-                            <td><?php echo number_format($product['old_price']) ?></td>
+                            <td><img style="width: 50px; height: 50px; object-fit: cover;"
+                                    src="../<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>"></td>
                             <td><?php echo number_format($product['current_price']) ?></td>
                             <td>
                                 <a href="<?php echo 'update_product.php?id=' . $product['id'] ?>"><button
                                         class="button-edit">Chỉnh sửa</button></a>
-                                <a href=""><button class="button-delete">Xoá</button></a>
-                                <a href=""><button class="button-preview">Xem trước</button></a>
+                                <a href="products.php?action=delete&id=<?php echo $product['id'] ?>"
+                                    onclick="return confirmDelete();"><button class="button-delete">Xoá</button></a>
+                                <a href="../product.php?id=<?php echo $product['id'] ?>"><button class="button-preview">Xem
+                                        trước</button></a>
                             </td>
                         </tr>
                     <?php endforeach;
                     ?>
-
-
                 </tbody>
             </table>
         </article>
@@ -245,6 +255,11 @@ requireLogin();
 
         </footer>
     </div>
+    <script>
+        function confirmDelete() {
+            return confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
+        }
+    </script>
 </body>
 
 </html>
