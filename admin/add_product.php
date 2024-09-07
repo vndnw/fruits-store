@@ -38,16 +38,16 @@ try {
         }
 
 
+        $stmt = $conn->prepare("INSERT INTO products (name, description, image, old_price, current_price, is_new, is_featured) VALUES (:name, :description, :image, :old_price, :current_price, :is_new, :is_featured)");
 
-        $stmt = $conn->prepare("UPDATE products SET name = :name, description = :description, image = :image, old_price = :old_price, current_price = :current_price, is_new = :is_new, is_featured = :is_featured WHERE id = :id");
-        $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':description', $description);
-        $stmt->bindValue(':image', $image);
-        $stmt->bindValue(':old_price', $old_price);
-        $stmt->bindValue(':current_price', $current_price);
-        $stmt->bindValue(':is_new', $is_new, PDO::PARAM_INT);
-        $stmt->bindValue(':is_featured', $is_featured, PDO::PARAM_INT);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        // Bind parameters
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':image', $image);
+        $stmt->bindParam(':old_price', $old_price);
+        $stmt->bindParam(':current_price', $current_price);
+        $stmt->bindParam(':is_new', $is_new);
+        $stmt->bindParam(':is_featured', $is_featured);
         $stmt->execute();
 
         header('Location: products.php');
@@ -242,7 +242,7 @@ try {
 
                 <div class="form-group">
                     <label for="image">Hình ảnh</label>
-                    <input type="file" id="image" name="image" accept="image/*">
+                    <input type="file" id="image" name="image" accept="image/*" required>
                     <div class="image-preview" id="image-preview">
                         <?php if (!empty($result['image'])): ?>
                             <img src="../<?php echo htmlspecialchars($result['image']); ?>"

@@ -8,7 +8,7 @@ requireLogin();
     /* Global Styles */
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f4f4f9;
+        background-color: #f1f1f1;
         margin: 0;
         padding: 0;
         color: #333;
