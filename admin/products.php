@@ -206,7 +206,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
         <article class="article">
             <div class="add-product">
                 <h1 class="products-name">Products</h1>
-                <a href="" class="product-add-new">
+                <a href="add_product.php" class="product-add-new">
                     <p>Thêm mới</p>
                 </a>
             </div>

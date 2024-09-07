@@ -3,6 +3,64 @@ require_once '../config/session.php';
 require_once '../config/connect.php';
 requireLogin();
 
+try {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $old_price = $_POST['old_price'];
+        $current_price = $_POST['current_price'];
+        $is_new = $_POST['is_new'];
+        $is_featured = $_POST['is_featured'];
+
+        echo $is_new;
+        echo $is_featured;
+
+        $target_dir = "../uploads/products/";
+        $image = $result['image'];
+
+
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
+
+        if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
+            $unique_name = pathinfo($_FILES["image"]["name"], PATHINFO_FILENAME) . uniqid() . '.' . pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+            $target_file = $target_dir . $unique_name;
+
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                $target_dir = "uploads/products/";
+                $image = $target_dir . $unique_name;
+            } else {
+                echo "Error uploading the file.";
+            }
+        } else {
+            echo "Error: " . $_FILES["image"]["error"];
+        }
+
+
+
+        $stmt = $conn->prepare("UPDATE products SET name = :name, description = :description, image = :image, old_price = :old_price, current_price = :current_price, is_new = :is_new, is_featured = :is_featured WHERE id = :id");
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':description', $description);
+        $stmt->bindValue(':image', $image);
+        $stmt->bindValue(':old_price', $old_price);
+        $stmt->bindValue(':current_price', $current_price);
+        $stmt->bindValue(':is_new', $is_new, PDO::PARAM_INT);
+        $stmt->bindValue(':is_featured', $is_featured, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        header('Location: products.php');
+        exit;
+
+    }
+
+} catch (Exception $e) {
+    die($e->getMessage());
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +68,7 @@ requireLogin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xobbee - Add New Product</title>
+    <title>Xobbee - Edit Product</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
@@ -151,6 +209,16 @@ requireLogin();
         .button-cancel:hover {
             background-color: #c62828;
         }
+
+        .product-options label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .product-options input[type="radio"] {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 
@@ -160,11 +228,11 @@ requireLogin();
         <?php include "./header.php" ?>
 
         <article class="article">
-            <h1>Add New Product</h1>
-            <form action="/add-product" method="post" enctype="multipart/form-data">
+            <h1>Edit Product</h1>
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="product-name">Tên sản phẩm</label>
-                    <input type="text" id="product-name" name="product_name" required>
+                    <label for="name">Tên sản phẩm</label>
+                    <input type="text" id="name" name="name" value="" required>
                 </div>
 
                 <div class="form-group">
@@ -174,33 +242,52 @@ requireLogin();
 
                 <div class="form-group">
                     <label for="image">Hình ảnh</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <input type="file" id="image" name="image" accept="image/*">
                     <div class="image-preview" id="image-preview">
-                        <!-- Image will be displayed here -->
+                        <?php if (!empty($result['image'])): ?>
+                            <img src="../<?php echo htmlspecialchars($result['image']); ?>"
+                                alt="<?php echo $result['name'] ?>">
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="old-price">Giá cũ</label>
-                    <input type="number" id="old-price" name="old_price" required>
+                    <input type="number" id="old-price" name="old_price" value="" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="new-price">Giá mới</label>
-                    <input type="number" id="new-price" name="new_price" required>
+                    <label for="current_price">Giá mới</label>
+                    <input type="number" id="current_price" name="current_price" value="" required>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="status">Trạng thái</label>
                     <select id="status" name="status" required>
-                        <option value="in_stock">Còn hàng</option>
-                        <option value="out_of_stock">Hết hàng</option>
+                        <option value="in_stock">Còn hàng
+                        </option>
+                        <option value="out_of_stock">
+                            Hết hàng</option>
                     </select>
+                </div> -->
+                <div class="">
+                    <div class="product-options">
+                        <label for="new_product_yes">Hàng mới:
+                            <input type="radio" id="new_product_yes" name="is_new" value="1" checked> Có
+                            <input type="radio" id="new_product_no" name="is_new" value="0"> Không
+                        </label>
+                        <br>
+                        <label for="featured_product_yes">Hàng nổi bật:
+                            <input type="radio" id="featured_product_yes" name="is_featured" value="1" checked> Có
+                            <input type="radio" id="featured_product_no" name="is_featured" value="0"> Không
+                        </label>
+                    </div>
                 </div>
+
 
                 <div class="form-buttons">
                     <button type="submit" class="button-save">Lưu</button>
-                    <a href="/products"><button type="button" class="button-cancel">Hủy</button></a>
+                    <a href="products.php"><button type="button" class="button-cancel">Hủy</button></a>
                 </div>
             </form>
         </article>
